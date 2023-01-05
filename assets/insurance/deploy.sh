@@ -1,3 +1,24 @@
+echo "This script will begin the setup of insurance usecase using Software AG product stack and Observability components
+
+Components will be created on the host - $HOSTNAME
+
+Pre-requisites should be configured as mentioned below
+
+Docker Credentials and Software AG's Container repo Credentials should be created as follows...
+
+kubectl create secret docker-registry regcred --docker-username=<username> --docker-password=<password> --docker-email=<email id>
+
+kubectl create secret docker-registry sagregcred --docker-server=sagcr.azurecr.io --docker-username=<username> --docker-password=<password> --docker-email=<email>
+
+Please confirm to continue [Y|N]: "
+read choice
+
+if [[ "$choice" != "Y" ]]
+then
+       echo "You have chosen to discontinue. No further actions."
+       exit 1
+fi
+
 echo "Building Assessments Image"
 cd insurance-usecase-type-apigw-mgw/applications/
 docker build -f assessments/Dockerfile -t fitness-assessments:v1.0 .

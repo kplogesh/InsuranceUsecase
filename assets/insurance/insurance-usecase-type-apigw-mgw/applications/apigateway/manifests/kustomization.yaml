@@ -2,3 +2,5 @@ resources:
 # Configurations and workloads to be deployed for this application
 - apigateway-pvc.yaml
 - apigateway.yaml
+- import-script-cm.yaml
+- asset-import-job.yaml
