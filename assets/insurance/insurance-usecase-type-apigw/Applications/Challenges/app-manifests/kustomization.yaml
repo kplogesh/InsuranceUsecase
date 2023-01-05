@@ -1,0 +1,5 @@
+resources:
+# Configurations and workloads to be deployed for this application
+- challenges-appconfig.yaml
+- challenges-deployment.yaml
+- challenges-svc.yaml

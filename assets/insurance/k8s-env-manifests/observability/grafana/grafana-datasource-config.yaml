@@ -1,0 +1,60 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-datasources
+  namespace: monitoring
+data:
+  datasources.yaml: |-
+    {
+        "apiVersion": 1,
+        "datasources": [
+            {
+               "access":"proxy",
+                "editable": true,
+                "name": "prometheus",
+                "orgId": 1,
+                "type": "prometheus",
+                "url": "http://prometheus-server:9090",
+                "version": 1
+            },
+            {
+                "name": "Traces-Elasticsearch",
+                "editable": true,
+                "type": "elasticsearch",
+                "access": "proxy",
+                "database": "customlogger_transactionalevents",
+                "url": "http://api-gateway-service:9240",
+                "jsonData":
+                {
+                  "timeField": "creationDate",
+                  "esVersion": "7.10.0"
+                }
+            },
+            {
+                "name": "Nodegraph-Elasticsearch",
+                "editable": true,
+                "type": "elasticsearch",
+                "access": "proxy",
+                "database": "edgefields",
+                "url": "http://api-gateway-service:9240",
+                "jsonData":
+                {
+                  "timeField": "creationDate",
+                  "esVersion": "7.10.0"
+                }
+            },
+            {
+                "name": "Logs Index - Elasticsearch",
+                "editable": true,
+                "type": "elasticsearch",
+                "access": "proxy",
+                "database": "logstash-noapplabel*",
+                "url": "http://api-gateway-service:9240",
+                "jsonData":
+                {
+                  "timeField": "@timestamp",
+                  "esVersion": "7.10.0"
+                }
+            }  
+        ]
+    }

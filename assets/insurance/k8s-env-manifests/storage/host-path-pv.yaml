@@ -1,0 +1,263 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv1
+  labels:
+    type: localVolume
+spec:
+  capacity: 
+    storage: 3Gi
+  accessModes:
+    - "ReadWriteMany"
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: manual
+  hostPath: 
+    path: /opt/monitoring/storage/pv1
+    type: DirectoryOrCreate
+
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv2
+  labels:
+    type: localVolume
+spec:
+  capacity: 
+    storage: 3Gi
+  accessModes:
+    - "ReadWriteMany"
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: manual
+  hostPath: 
+    path: /opt/monitoring/storage/pv2
+    type: DirectoryOrCreate
+
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv3
+  labels:
+    type: localVolume
+spec:
+  capacity: 
+    storage: 2Gi
+  accessModes:
+    - "ReadWriteMany"
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: manual
+  hostPath: 
+    path: /opt/monitoring/storage/pv3
+    type: DirectoryOrCreate
+
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv4
+  labels:
+    type: localVolume
+spec:
+  capacity: 
+    storage: 2Gi
+  accessModes:
+    - "ReadWriteMany"
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: manual
+  hostPath: 
+    path: /opt/monitoring/storage/pv4
+    type: DirectoryOrCreate
+
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv5
+  labels:
+    type: localVolume
+spec:
+  capacity: 
+    storage: 1Gi
+  accessModes:
+    - "ReadWriteMany"
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: manual
+  hostPath: 
+    path: /opt/monitoring/storage/pv5
+    type: DirectoryOrCreate
+
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv6
+  labels:
+    type: localVolume
+spec:
+  capacity: 
+    storage: 1Gi
+  accessModes:
+    - "ReadWriteMany"
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: manual
+  hostPath: 
+    path: /opt/monitoring/storage/pv6
+    type: DirectoryOrCreate
+
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv7
+  labels:
+    type: localVolume
+spec:
+  capacity: 
+    storage: 1Gi
+  accessModes:
+    - "ReadWriteMany"
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: manual
+  hostPath: 
+    path: /opt/monitoring/storage/pv7
+    type: DirectoryOrCreate
+
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv8
+  labels:
+    type: localVolume
+spec:
+  capacity: 
+    storage: 5Gi
+  accessModes:
+    - "ReadWriteMany"
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: manual
+  hostPath: 
+    path: /opt/monitoring/storage/pv8
+    type: DirectoryOrCreate
+
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv9
+  labels:
+    type: localVolume
+spec:
+  capacity: 
+    storage: 5Gi
+  accessModes:
+    - "ReadWriteMany"
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: manual
+  hostPath: 
+    path: /opt/monitoring/storage/pv9   
+    type: DirectoryOrCreate 
+
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv10
+  labels:
+    type: localVolume
+spec:
+  capacity: 
+    storage: 2Gi
+  accessModes:
+    - "ReadWriteMany"
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: manual
+  hostPath: 
+    path: /opt/monitoring/storage/pv10
+    type: DirectoryOrCreate
+
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv11
+  labels:
+    type: localVolume
+spec:
+  capacity: 
+    storage: 2Gi
+  accessModes:
+    - "ReadWriteMany"
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: manual
+  hostPath: 
+    path: /opt/monitoring/storage/pv11
+    type: DirectoryOrCreate
+
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv12
+  labels:
+    type: localVolume
+spec:
+  capacity: 
+    storage: 2Gi
+  accessModes:
+    - "ReadWriteMany"
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: manual
+  hostPath: 
+    path: /opt/monitoring/storage/pv12 
+    type: DirectoryOrCreate 
+
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv13
+  labels:
+    type: localVolume
+spec:
+  capacity: 
+    storage: 2Gi
+  accessModes:
+    - "ReadWriteMany"
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: manual
+  hostPath: 
+    path: /opt/monitoring/storage/pv13
+    type: DirectoryOrCreate
+
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv14
+  labels:
+    type: localVolume
+spec:
+  capacity: 
+    storage: 2Gi
+  accessModes:
+    - "ReadWriteMany"
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: manual
+  hostPath: 
+    path: /opt/monitoring/storage/pv14  
+    type: DirectoryOrCreate

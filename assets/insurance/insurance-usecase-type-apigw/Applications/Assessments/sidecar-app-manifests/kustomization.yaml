@@ -1,0 +1,5 @@
+resources:
+# Configurations and workloads to be deployed for this application
+- assessments-appconfig.yaml
+- assessments-deployment.yaml
+- assessments-svc.yaml
