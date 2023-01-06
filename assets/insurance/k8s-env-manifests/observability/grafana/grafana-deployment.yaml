@@ -55,7 +55,8 @@ spec:
             name: grafana-ini
             subPath: grafana.ini
       imagePullSecrets:
-        - name: regcred              
+        - name: regcred    
+      imagePullPolicy: IfNotPresent            
       volumes:
         - name: grafana-storage
           persistentVolumeClaim:

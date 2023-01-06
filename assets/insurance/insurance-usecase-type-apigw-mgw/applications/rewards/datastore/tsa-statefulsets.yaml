@@ -24,6 +24,7 @@ spec:
       containers:    
         - name: terracotta-bigmemory-server
           image: sagcr.azurecr.io/bigmemorymax-server:4.4.0
+          imagePullPolicy: IfNotPresent
           env:
           - name: ACCEPT_EULA
             value: "Y"

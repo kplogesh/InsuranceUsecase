@@ -52,6 +52,7 @@ spec:
             - ALL
           readOnlyRootFilesystem: true
           runAsUser: 65534
+        imagePullPolicy: IfNotPresent          
         resources:
           limits:
             cpu: "1"

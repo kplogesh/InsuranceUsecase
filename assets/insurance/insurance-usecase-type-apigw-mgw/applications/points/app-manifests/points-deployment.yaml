@@ -24,6 +24,7 @@ spec:
       initContainers:
       - name: api-gateway-dependency-check
         image: redhat/ubi8-minimal
+        imagePullPolicy: IfNotPresent
         args:
         - /bin/sh
         - -c

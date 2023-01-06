@@ -51,6 +51,7 @@ spec:
         runAsNonRoot: true
         runAsUser: 65534
       terminationGracePeriodSeconds: 30
+      imagePullPolicy: IfNotPresent
       imagePullSecrets:
         - name: regcred        
       volumes:
