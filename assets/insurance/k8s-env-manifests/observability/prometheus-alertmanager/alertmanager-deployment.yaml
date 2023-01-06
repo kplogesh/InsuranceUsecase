@@ -69,8 +69,7 @@ spec:
         fsGroup: 65534
         runAsGroup: 65534
         runAsNonRoot: true
-        runAsUser: 65534
-      imagePullPolicy: IfNotPresent        
+        runAsUser: 65534       
       imagePullSecrets:
         - name: regcred        
       volumes:
