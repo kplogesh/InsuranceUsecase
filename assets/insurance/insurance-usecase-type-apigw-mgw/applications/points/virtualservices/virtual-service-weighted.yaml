@@ -12,9 +12,9 @@ spec:
   - route:
     - destination:
         host: points # interpreted as reviews.foo.svc.cluster.local
-        subset: v1.0
+        subset: v1
       weight: 90
     - destination:
         host: points # interpreted as reviews.foo.svc.cluster.local
-        subset: v2.0
+        subset: v2
       weight: 10      
