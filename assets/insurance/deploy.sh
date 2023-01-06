@@ -39,14 +39,16 @@ echo "Installing local path provisioner for volumes"
 kubectl apply -f https://raw.githubusercontent.com/rancher/local-path-provisioner/v0.0.23/deploy/local-path-storage.yaml
 
 echo "Installing Istio - Service Mesh"
+cd ../../
 curl -L https://istio.io/downloadIstio | sh -
-export PATH="$PATH:$PWD/istio-1.16.0/bin"
+export PATH="$PATH:$PWD/istio-1.16.1/bin"
+echo $PATH
 istioctl install --set profile=demo -y
 kubectl create ns insurance
 kubectl label namespace insurance istio-injection=enabled
 
 echo "Install the applications - Insurance Usecase"
-kubectl kustomize apply -k k8s-env-manifests/overlays/app/
+kubectl apply -k k8s-env-manifests/overlays/app/
 
 echo "Install the Observability - Components"
-kubectl kustomize apply -k k8s-env-manifests/overlays/olly/
+kubectl apply -k k8s-env-manifests/overlays/olly/

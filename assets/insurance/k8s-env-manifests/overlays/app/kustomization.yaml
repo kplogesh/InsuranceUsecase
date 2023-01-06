@@ -1,25 +1,25 @@
 bases:
 # General configurations to create namespace
-- ../../insurance-usecase-type-apigw-mgw/common
+- ../../../insurance-usecase-type-apigw-mgw/common
 # Configure the licenses required for the components to run
-- ../../insurance-usecase-type-apigw-mgw/licenses
+- ../../../insurance-usecase-type-apigw-mgw/licenses
 # Create the volumes
 # - ../../insurance-usecase-type-apigw-mgw/storage
 # Gateway configurations
-- ../../insurance-usecase-type-apigw-mgw/applications/apigateway/manifests
-- ../../insurance-usecase-type-apigw-mgw/applications/apigateway/virtualServices
+- ../../../insurance-usecase-type-apigw-mgw/applications/apigateway/manifests
+- ../../../insurance-usecase-type-apigw-mgw/applications/apigateway/virtualservices
 # Assessment - Microgateway based deployments
-- ../../insurance-usecase-type-apigw-mgw/applications/assessments/app-manifests
+- ../../../insurance-usecase-type-apigw-mgw/applications/assessments/app-manifests
 # Challenges - Microgateway based deployments
-- ../../insurance-usecase-type-apigw-mgw/applications/challenges/datastore
-- ../../insurance-usecase-type-apigw-mgw/applications/challenges/app-manifests
+- ../../../insurance-usecase-type-apigw-mgw/applications/challenges/datastore
+- ../../../insurance-usecase-type-apigw-mgw/applications/challenges/app-manifests
 # Memberships - Microgateway based deployments
-- ../../insurance-usecase-type-apigw-mgw/applications/memberships/datastore
-- ../../insurance-usecase-type-apigw-mgw/applications/memberships/app-manifests
+- ../../../insurance-usecase-type-apigw-mgw/applications/memberships/datastore
+- ../../../insurance-usecase-type-apigw-mgw/applications/memberships/app-manifests
 # Points - Microgateway based deployments
-- ../../insurance-usecase-type-apigw-mgw/applications/points/datastore
-- ../../insurance-usecase-type-apigw-mgw/applications/points/app-manifests
-- ../../insurance-usecase-type-apigw-mgw/applications/points/VirtualServices
+- ../../../insurance-usecase-type-apigw-mgw/applications/points/datastore
+- ../../../insurance-usecase-type-apigw-mgw/applications/points/app-manifests
+- ../../../insurance-usecase-type-apigw-mgw/applications/points/virtualservices
 # Rewards - Microgateway based deployments
-- ../../insurance-usecase-type-apigw-mgw/applications/rewards/datastore
-- ../../insurance-usecase-type-apigw-mgw/applications/rewards/app-manifests
+- ../../../insurance-usecase-type-apigw-mgw/applications/rewards/datastore
+- ../../../insurance-usecase-type-apigw-mgw/applications/rewards/app-manifests

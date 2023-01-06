@@ -1,12 +1,12 @@
 bases:
 # General configurations to create namespace
-- ../../Observability/Common
+- ../../observability/common
 # Create the volumes
 # - ../../Storage
 # Gateway configurations
-- ../../Observability/Prometheus
-- ../../Observability/Prometheus-AlertManager
-- ../../Observability/Node-Exporter
-- ../../Observability/Kube-State-Metrics
-- ../../Observability/Kiali
-- ../../Observability/Grafana
+- ../../observability/prometheus
+- ../../observability/prometheus-alertmanager
+- ../../observability/node-exporter
+- ../../observability/kube-state-metrics
+- ../../observability/kiali
+- ../../observability/grafana
