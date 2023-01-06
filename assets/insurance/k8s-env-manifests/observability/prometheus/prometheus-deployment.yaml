@@ -26,6 +26,7 @@ spec:
       containers:   
       - name: prometheus
         image: prom/prometheus
+        imagePullPolicy: "IfNotPresent"
         args:
           - --storage.tsdb.retention.time=15d
           - --config.file=/etc/config/prometheus.yml
@@ -76,7 +77,6 @@ spec:
         - name: prometheus-storage
           mountPath: /data
       restartPolicy: Always
-      imagePullPolicy: IfNotPresent
       imagePullSecrets:
         - name: regcred    
       volumes:
