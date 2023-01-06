@@ -86,7 +86,6 @@ spec:
       imagePullSecrets:
         - name: regcred
         - name: sagregcred   
-      imagePullPolicy: IfNotPresent  
       # Volume definitions referenced in volume mounts (above section)
       volumes:
         - name: apigw-storage
