@@ -8,12 +8,14 @@ spec:
     matchLabels:
       app: challenges
       version: v1.0
+      component: msr
   replicas: 1
   template:
     metadata:
       labels:
         app: challenges
         version: v1.0
+        component: msr
     spec:
       hostAliases:
       - ip: "127.0.0.1"
