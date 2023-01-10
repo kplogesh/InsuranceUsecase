@@ -12,7 +12,7 @@ then
 fi
 
 echo "Uninstall the applications - Insurance Usecase"
-kubectl delete -k ../k8s-env-manifests/overlays/app/
+kubectl delete -k ../k8s-env-manifests/overlays/type-apigw-mgw/
 
 echo "Uninstall the Observability - Components"
 kubectl delete -k ../k8s-env-manifests/overlays/olly/
