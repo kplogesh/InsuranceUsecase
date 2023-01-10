@@ -11,19 +11,20 @@ spec:
   selector:
     matchLabels:
       app: memberships
-      name: memberships-datastore
+      component: bigmemory
       version: 4.4.0
   template:
     metadata:
       labels:
         app: memberships
-        name: memberships-datastore
+        component: bigmemory
         version: 4.4.0
     spec:
       terminationGracePeriodSeconds: 10
       containers:    
         - name: terracotta-bigmemory-server
           image: sagcr.azurecr.io/bigmemorymax-server:4.4.0
+          imagePullPolicy: IfNotPresent
           env:
           - name: ACCEPT_EULA
             value: "Y"
@@ -73,7 +74,7 @@ spec:
           configMap:
             name: webmethodslicensekeys
       imagePullSecrets:
-        - name: logeshsagazureregistry             
+        - name: sagregcred            
   volumeClaimTemplates:
   - metadata:
       name: memberships-datastore
@@ -81,8 +82,8 @@ spec:
         type: hostPath
     spec:
       accessModes: 
-      - ReadWriteMany
-      storageClassName: manual
+      - ReadWriteOnce
+      storageClassName: local-path
       resources:
         requests:
           storage: 2Gi

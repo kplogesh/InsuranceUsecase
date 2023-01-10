@@ -3,3 +3,4 @@ resources:
 - points-appconfig.yaml
 - points-deployment.yaml
 - points-svc.yaml
+- points-deployment-v2.yaml

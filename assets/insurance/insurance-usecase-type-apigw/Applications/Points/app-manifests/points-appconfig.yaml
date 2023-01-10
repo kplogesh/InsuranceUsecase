@@ -5,7 +5,7 @@ metadata:
   namespace: insurance
   labels:
     app: points
-    version: v1
+    version: v1.0
 data:
   application.properties: |
     #Sample Generated Template

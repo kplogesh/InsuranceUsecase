@@ -24,6 +24,7 @@ spec:
       containers:    
         - name: terracotta-bigmemory-server
           image: sagcr.azurecr.io/bigmemorymax-server:4.4.0
+          imagePullPolicy: IfNotPresent
           env:
           - name: ACCEPT_EULA
             value: "Y"
@@ -73,7 +74,7 @@ spec:
           configMap:
             name: webmethodslicensekeys
       imagePullSecrets:
-        - name: logeshsagazureregistry             
+        - name: sagregcred             
   volumeClaimTemplates:
   - metadata:
       name: rewards-datastore
@@ -81,8 +82,8 @@ spec:
         type: hostPath
     spec:
       accessModes: 
-      - ReadWriteMany
-      storageClassName: manual
+      - ReadWriteOnce
+      storageClassName: local-path
       resources:
         requests:
           storage: 2Gi

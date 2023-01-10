@@ -5,14 +5,12 @@ metadata:
   namespace: insurance
   labels:
     app: challenges
-    version: 4.4.0
   annotations:
       prometheus.io/scrape: 'false'    
 spec:
   selector:
     app: challenges
-    name: challenges-datastore
-    version: 4.4.0
+    component: bigmemory
   clusterIP: None
   ports:
     - port: 9510

@@ -7,23 +7,35 @@ spec:
   selector:
     matchLabels:
       app: points
-      name: points
-      version: v1
+      component: msr
+      version: v1.0
   replicas: 1
   template:
     metadata:
       labels:
         app: points
-        name: points
-        version: v1
+        component: msr
+        version: v1.0
     spec:
       hostAliases:
       - ip: "127.0.0.1"
         hostnames:
-        - "points"     
-      containers:
+        - "points"    
+      initContainers:
+      - name: api-gateway-dependency-check
+        image: redhat/ubi8-minimal
+        imagePullPolicy: IfNotPresent
+        args:
+        - /bin/sh
+        - -c
+        - >
+          set -x;
+          while [ $(curl -sw '%{http_code}' "http://api-gateway:5555/rest/apigateway/health" -o /dev/null) -ne 200 ]; do
+            sleep 15;
+          done           
+      containers:          
         - name: insurance-fitness-points-container       
-          image: fitness-points:v1
+          image: fitness-points:v1.0
           imagePullPolicy: IfNotPresent        
         # Resources required for the apigateway to function. CPUs and Memory configurations.
           resources:
@@ -37,7 +49,7 @@ spec:
           - name: JAVA_MIN_MEM
             value: "256M"
           - name: JAVA_MAX_MEM
-            value: "1024M"      
+            value: "1024M"       
           ports:
             - containerPort: 5555
         # Liveness probe to check whether container is active. Restart happens when liveness probe fails.
@@ -70,7 +82,8 @@ spec:
               mountPath: /opt/softwareag/IntegrationServer/application.properties
               subPath: application.properties              
       imagePullSecrets:
-        - name: logeshsagazureregistry                
+        - name: regcred
+        - name: sagregcred             
       volumes:
         - name: licensekey
           configMap:

@@ -1,0 +1,21 @@
+bases:
+# General configurations to create namespace
+- ../../../insurance-usecase-type-apigw-mgw/common
+# Configure the licenses required for the components to run
+- ../../../insurance-usecase-type-apigw-mgw/licenses
+# Gateway configurations
+- ../../../insurance-usecase-type-apigw-mgw/applications/apigateway/manifests
+# Assessment - Microgateway based deployments
+- ../../../insurance-usecase-type-apigw-mgw/applications/assessments/app-manifests
+# Challenges - Microgateway based deployments
+- ../../../insurance-usecase-type-apigw-mgw/applications/challenges/datastore
+- ../../../insurance-usecase-type-apigw-mgw/applications/challenges/app-manifests
+# Memberships - Microgateway based deployments
+- ../../../insurance-usecase-type-apigw-mgw/applications/memberships/datastore
+- ../../../insurance-usecase-type-apigw-mgw/applications/memberships/app-manifests
+# Points - Microgateway based deployments
+- ../../../insurance-usecase-type-apigw-mgw/applications/points/datastore
+- ../../../insurance-usecase-type-apigw-mgw/applications/points/app-manifests
+# Rewards - Microgateway based deployments
+- ../../../insurance-usecase-type-apigw-mgw/applications/rewards/datastore
+- ../../../insurance-usecase-type-apigw-mgw/applications/rewards/app-manifests

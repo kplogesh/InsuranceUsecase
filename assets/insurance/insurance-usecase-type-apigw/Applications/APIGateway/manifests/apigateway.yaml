@@ -84,8 +84,8 @@ spec:
           successThreshold: 1
           timeoutSeconds: 2
       imagePullSecrets:
-        - name: logeshsagazureregistry    
-        - name: sagintegrationpractice
+        - name: regcred
+        - name: sagregcred   
       # Volume definitions referenced in volume mounts (above section)
       volumes:
         - name: apigw-storage

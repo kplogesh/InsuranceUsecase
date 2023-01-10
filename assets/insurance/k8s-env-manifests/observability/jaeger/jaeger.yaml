@@ -36,6 +36,10 @@ spec:
               value: "50000"
             - name: QUERY_BASE_PATH
               value: /jaeger
+            - name: METRICS_STORAGE_TYPE
+              value: prometheus
+            - name: PROMETHEUS_SERVER_URL
+              value: http://prometheus-server.monitoring:9090
           livenessProbe:
             httpGet:
               path: /
@@ -53,7 +57,7 @@ spec:
               memory: 100Mi
             limits:
               cpu: 100m
-              memory: 250Mi
+              memory: 1Gi
       volumes:
         - name: data
           emptyDir: {}

@@ -11,15 +11,14 @@ metadata:
 spec:
   selector:
     app: challenges
-    version: v1
+    component: msr
   ports:
+    - port: 4485
+      name: http-microgateway
+      targetPort: 4485
     - port: 5555
       name: http-server
       targetPort: 5555
-      nodePort: 30300
-    - port: 5656
-      name: https-server
-      targetPort: 5656
       nodePort: 30301
   type: NodePort
   sessionAffinity: ClientIP

@@ -13,13 +13,13 @@ spec:
     app: points
     component: msr
   ports:
+    - port: 4485
+      name: http-microgateway
+      targetPort: 4485
+      nodePort: 30001
     - port: 5555
       name: http-server
       targetPort: 5555
-      nodePort: 30000
-    - port: 5656
-      name: https-server
-      targetPort: 5656
-      nodePort: 30001
+      nodePort: 30000      
   type: NodePort
   sessionAffinity: ClientIP
