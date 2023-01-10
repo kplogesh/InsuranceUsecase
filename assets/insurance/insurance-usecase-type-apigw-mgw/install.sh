@@ -48,7 +48,7 @@ kubectl create ns insurance
 kubectl label namespace insurance istio-injection=enabled
 
 echo "Install the applications - Insurance Usecase"
-kubectl apply -k k8s-env-manifests/overlays/app/
+kubectl apply -k k8s-env-manifests/overlays/type-apigw-mgw/
 
 echo "Install the Observability - Components"
 kubectl apply -k k8s-env-manifests/overlays/olly/

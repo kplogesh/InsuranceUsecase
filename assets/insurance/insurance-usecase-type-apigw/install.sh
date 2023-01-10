@@ -41,7 +41,7 @@ kubectl apply -f https://raw.githubusercontent.com/rancher/local-path-provisione
 kubectl create ns insurance
 
 echo "Install the applications - Insurance Usecase"
-kubectl apply -k k8s-env-manifests/overlays/app/
+kubectl apply -k k8s-env-manifests/overlays/type-apigw/
 
 echo "Install the Observability - Components"
 kubectl apply -k k8s-env-manifests/overlays/olly/

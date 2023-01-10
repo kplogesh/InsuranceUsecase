@@ -12,10 +12,10 @@ then
 fi
 
 echo "Uninstall the applications - Insurance Usecase"
-kubectl delete -k k8s-env-manifests/overlays/app/
+kubectl delete -k ../k8s-env-manifests/overlays/app/
 
 echo "Uninstall the Observability - Components"
-kubectl delete -k k8s-env-manifests/overlays/olly/
+kubectl delete -k ../k8s-env-manifests/overlays/olly/
 
 echo "deleting local path provisioner"
 kubectl delete -f https://raw.githubusercontent.com/rancher/local-path-provisioner/v0.0.23/deploy/local-path-storage.yaml
