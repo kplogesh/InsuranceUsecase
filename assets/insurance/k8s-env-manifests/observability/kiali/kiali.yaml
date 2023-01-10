@@ -95,7 +95,11 @@ data:
         root_namespace: istio-system 
       prometheus:
         # Prometheus service name is "metrics" and is in the "telemetry" namespace
-        url: "http://prometheus-server.monitoring:9090/"        
+        url: "http://prometheus-server.monitoring:9090/"     
+      tracing:
+        in_cluster_url: 'http://tracing.monitoring/jaeger'   
+        url: 'http://tracing.monitoring/jaeger'    
+        use_grpc: false    
     identity:
       cert_file: ""
       private_key_file: ""

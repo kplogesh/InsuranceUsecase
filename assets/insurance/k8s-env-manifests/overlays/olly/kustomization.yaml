@@ -8,5 +8,6 @@ bases:
 - ../../observability/prometheus-alertmanager
 - ../../observability/node-exporter
 - ../../observability/kube-state-metrics
+- ../../observability/jaeger
 - ../../observability/kiali
 - ../../observability/grafana
