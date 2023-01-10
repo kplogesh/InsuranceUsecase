@@ -1,5 +1,0 @@
-resources:
-# Configurations and workloads to be deployed for this application
-- tsa-configmap-tc.yaml
-- tsa-headless-svc.yaml
-- tsa-statefulsets.yaml

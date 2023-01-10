@@ -1,5 +1,0 @@
-resources:
-# Configurations and workloads to be deployed for this application
-- memberships-appconfig.yaml
-- memberships-deployment.yaml
-- memberships-svc.yaml
