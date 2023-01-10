@@ -43,7 +43,7 @@ cd ../../
 curl -L https://istio.io/downloadIstio | sh -
 export PATH="$PATH:$PWD/istio-1.16.1/bin"
 echo $PATH
-istioctl install --set profile=demo -y
+istioctl install --set profile=demo --set values.global.tracer.zipkin.address=jaeger-collector.monitoring:9411 -y
 kubectl create ns insurance
 kubectl label namespace insurance istio-injection=enabled
 
