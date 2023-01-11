@@ -20,18 +20,7 @@ spec:
       hostAliases:
       - ip: "127.0.0.1"
         hostnames:
-        - "points"      
-      initContainers:
-      - name: api-gateway-dependency-check
-        image: redhat/ubi8-minimal
-        args:
-        - /bin/sh
-        - -c
-        - >
-          set -x;
-          while [ $(curl -sw '%{http_code}' "http://api-gateway:5555/rest/apigateway/health" -o /dev/null) -ne 200 ]; do
-            sleep 15;
-          done        
+        - "points"       
       containers:
         - name: insurance-fitness-points-container       
           image: fitness-points:v1.0

@@ -1,21 +1,21 @@
 bases:
 # General configurations to create namespace
-- ../../../insurance-usecase-type-apigw-mgw/common
+- ../../../insurance-usecase-type-apigw/common
 # Configure the licenses required for the components to run
-- ../../../insurance-usecase-type-apigw-mgw/licenses
+- ../../../insurance-usecase-type-apigw/licenses
 # Gateway configurations
-- ../../../insurance-usecase-type-apigw-mgw/applications/apigateway/manifests
+- ../../../insurance-usecase-type-apigw/applications/apigateway/manifests
 # Assessment - Microgateway based deployments
-- ../../../insurance-usecase-type-apigw-mgw/applications/assessments/app-manifests
+- ../../../insurance-usecase-type-apigw/applications/assessments/app-manifests
 # Challenges - Microgateway based deployments
-- ../../../insurance-usecase-type-apigw-mgw/applications/challenges/datastore
-- ../../../insurance-usecase-type-apigw-mgw/applications/challenges/app-manifests
+- ../../../insurance-usecase-type-apigw/applications/challenges/datastore
+- ../../../insurance-usecase-type-apigw/applications/challenges/app-manifests
 # Memberships - Microgateway based deployments
-- ../../../insurance-usecase-type-apigw-mgw/applications/memberships/datastore
-- ../../../insurance-usecase-type-apigw-mgw/applications/memberships/app-manifests
+- ../../../insurance-usecase-type-apigw/applications/memberships/datastore
+- ../../../insurance-usecase-type-apigw/applications/memberships/app-manifests
 # Points - Microgateway based deployments
-- ../../../insurance-usecase-type-apigw-mgw/applications/points/datastore
-- ../../../insurance-usecase-type-apigw-mgw/applications/points/app-manifests
+- ../../../insurance-usecase-type-apigw/applications/points/datastore
+- ../../../insurance-usecase-type-apigw/applications/points/app-manifests
 # Rewards - Microgateway based deployments
-- ../../../insurance-usecase-type-apigw-mgw/applications/rewards/datastore
-- ../../../insurance-usecase-type-apigw-mgw/applications/rewards/app-manifests
+- ../../../insurance-usecase-type-apigw/applications/rewards/datastore
+- ../../../insurance-usecase-type-apigw/applications/rewards/app-manifests
