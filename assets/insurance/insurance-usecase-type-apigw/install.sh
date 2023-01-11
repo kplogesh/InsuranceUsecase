@@ -40,6 +40,7 @@ kubectl apply -f https://raw.githubusercontent.com/rancher/local-path-provisione
 
 kubectl create ns insurance
 
+cd ../../
 echo "Install the applications - Insurance Usecase"
 kubectl apply -k k8s-env-manifests/overlays/type-apigw/
 

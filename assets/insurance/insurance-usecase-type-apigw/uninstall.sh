@@ -19,9 +19,3 @@ kubectl delete -k ../k8s-env-manifests/overlays/olly/
 
 echo "deleting local path provisioner"
 kubectl delete -f https://raw.githubusercontent.com/rancher/local-path-provisioner/v0.0.23/deploy/local-path-storage.yaml
-
-echo "Uninstall Istio - Service Mesh"
-cd istio-1.16.1/bin
-./istioctl uninstall --purge -y
-
-kubectl delete ns istio-system
