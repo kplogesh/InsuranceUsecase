@@ -28,7 +28,7 @@ data:
     messaging.IS_UM_CONNECTION.default=true
     messaging.IS_UM_CONNECTION.type=UM
     messaging.IS_UM_CONNECTION.url=nsp\://localhost\:9000
-    settings.watt.server.compile=/opt/softwareag/IntegrationServer/docker/../../jvm/jvm/bin/javac -classpath {0} -d {1} {2}
+    settings.watt.server.compile=
     statisticsdatacollector.monitorConfig.enabled=true
     statisticsdatacollector.monitorConfig.indexerThreadCount=8
     statisticsdatacollector.monitorConfig.luceneMemorySize=256

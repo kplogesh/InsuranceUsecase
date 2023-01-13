@@ -13,10 +13,6 @@ spec:
     app: assessments
     component: msr
   ports:
-    - port: 4485
-      name: http-microgateway
-      targetPort: 4485
-      nodePort: 30200
     - port: 5555
       name: http-server
       targetPort: 5555
