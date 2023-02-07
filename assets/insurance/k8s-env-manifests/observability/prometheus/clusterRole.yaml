@@ -6,6 +6,7 @@ rules:
 - apiGroups: 
   - apps
   - extensions
+  - metrics.k8s.io
   resources:
   - deployments
   - daemonsets
@@ -74,6 +75,12 @@ rules:
   resources:
   - ingresses
   verbs: ["get", "list", "watch"]
+- apiGroups:
+  - metrics.k8s.io
+  resources:
+  - '*'
+  verbs:
+  - '*'  
 - nonResourceURLs: ["/metrics"]
   verbs: ["get"]
   

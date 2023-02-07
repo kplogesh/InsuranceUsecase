@@ -1,0 +1,315 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-gateway-deployment-external-es
+  labels:
+    app: api-gateway-deployment-external-es
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-gateway-deployment-external-es
+  template:
+    metadata:
+      labels:
+        app: api-gateway-deployment-external-es
+    spec:
+      initContainers:
+      - name: increase-vm-max-map
+        image: busybox:latest
+        imagePullPolicy: IfNotPresent
+        command: ["sysctl", "-w", "vm.max_map_count=262144"]
+        securityContext:
+          privileged: true
+      - name: increase-fd-ulimit
+        image: busybox:latest
+        command: ["sh", "-c", "ulimit -n 65536"]
+        securityContext:
+          privileged: true
+      containers:
+      - name: api-gateway-deployment-external-es
+        image: apigateway:10.15.p1
+        imagePullPolicy: IfNotPresent  
+        securityContext:
+          privileged: true                       
+        resources:
+          requests:
+            cpu: "2"
+            memory: "4Gi"
+          limits:
+            cpu: "4"
+            memory: "6Gi" 
+        ports:
+        - containerPort: 5555
+          name: 5555tcp01
+          protocol: TCP
+        - containerPort: 9072
+          name: 9072tcp01
+          protocol: TCP
+        - containerPort: 5543
+          name: 5543tcp01
+          protocol: TCP
+        - containerPort: 9073
+          name: 9073tcp01
+          protocol: TCP
+        # Liveness probe to check whether container is active. Restart happens when liveness probe fails.
+        livenessProbe:
+          failureThreshold: 20
+          initialDelaySeconds: 60
+          periodSeconds: 30
+          successThreshold: 1
+          tcpSocket:
+            port: 5555
+          timeoutSeconds: 2
+        # Readiness probe to check whether pod is ready to serve the requests. Traffic will not be injected unless readiness probes passes.
+        readinessProbe:
+          failureThreshold: 10
+          httpGet:
+            path: /rest/apigateway/health
+            port: 5555
+            scheme: HTTP
+          initialDelaySeconds: 100
+          periodSeconds: 100
+          successThreshold: 1
+          timeoutSeconds: 10    
+        volumeMounts:
+        - name: apigw-license
+          mountPath: /opt/softwareag/IntegrationServer/instances/default/config/licenseKey.xml
+          subPath: apigw-licensekey.xml
+          readOnly: false
+        - name: application-properties
+          mountPath: /opt/softwareag/IntegrationServer/application.properties
+          subPath: application.properties     
+        - name: config-sources
+          mountPath: /opt/softwareag/IntegrationServer/instances/default/packages/WmAPIGateway/resources/configuration/config-sources.yml
+          subPath: config-sources.yml       
+          readOnly: false
+        - name: system-settings
+          mountPath: /opt/softwareag/IntegrationServer/instances/default/packages/WmAPIGateway/resources/configuration/system-settings.yml
+          subPath: system-settings.yml        
+          readOnly: false    
+      volumes:
+      - name: apigw-license
+        configMap:
+          name: apigw-license-config
+          items:
+          - key: apigw-licensekey.xml
+            path: apigw-licensekey.xml
+      - name: application-properties
+        configMap:
+          name: apigw-application-config        
+      - name: config-sources
+        configMap:
+          name: apigw-application-config  
+          defaultMode: 0777
+      - name: system-settings
+        configMap:
+          name: apigw-application-config    
+          defaultMode: 0777                 
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: apigw-license-config
+  namespace: insurance
+data:
+    apigw-licensekey.xml: |
+      <?xml version="1.0" encoding="US-ASCII"?>
+      <SoftwareAG_License>
+      <Component Id="SalesInfo">
+      <SerialNumber>0000709316</SerialNumber>
+      <LicenseKey>E339DC97D75149D3C913928B4B4CDBF8</LicenseKey>
+      <CustomerID>Software AG for Solution Book Internal USE ONLY</CustomerID>
+      <CustomerName>3150000</CustomerName>
+      <ContractDetails>Internal Keys</ContractDetails>
+      <ContractPosNumber>10</ContractPosNumber>
+      <LicenseTypeDetails>Internal</LicenseTypeDetails>
+      <AutoCallHome>No</AutoCallHome>
+      </Component>
+      <Component Id="ProductInfo">
+      <ExpirationDate>2023/10/31</ExpirationDate>
+      <OS>win, SunOS, Linux, Linux S390, AIX, HP-UX, MacOS</OS>
+      <ProductCode>YAIAA</ProductCode>
+      <ProductID/>
+      <ProductName>API Gateway Advanced Edition</ProductName>
+      <ProductVersion>10.7</ProductVersion>
+      <Usage/>
+      <RenewalDate/>
+      <HigherLevPosNr/>
+      <HigherLevProdCode/>
+      <HigherLevProdName/>
+      </Component>
+      <Component Id="Integration Server">
+      <ProductCode>YAI</ProductCode>
+      <ProductVersion>10.7</ProductVersion>
+      <ConcurrentSessions>Unlimited</ConcurrentSessions>
+      <Clustering>yes</Clustering>
+      <PubSub>no</PubSub>
+      <ART>no</ART>
+      <RemoteInvoke>yes</RemoteInvoke>
+      <GuaranteedDelivery>no</GuaranteedDelivery>
+      <SecurityAuditing>yes</SecurityAuditing>
+      <DistributedCache>yes</DistributedCache>
+      <EnterpriseGateway>yes</EnterpriseGateway>
+      <Microservices>yes</Microservices>
+      </Component>
+      <Component Id="APIGateway">
+      <PolicyManagementThreatProtection>yes</PolicyManagementThreatProtection>
+      <PolicyManagementGateway>yes</PolicyManagementGateway>
+      <ApplicationManagement>yes</ApplicationManagement>
+      <APIManagement>yes</APIManagement>
+      <AppMesh>yes</AppMesh>
+      </Component>
+      <Component Id="LicenseInfo">
+      <PriceUnit>CoreD</PriceUnit>
+      <PriceQuantity>16</PriceQuantity>
+      <TypeOfInstallation/>
+      <LicenseType/>
+      <ExtendedRights/>
+      <LicenseVersion>1.2</LicenseVersion>
+      <Metering>MNO</Metering>
+      </Component>
+      </SoftwareAG_License>
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: apigw-application-config
+  namespace: insurance
+data:
+  application.properties: |
+    settings.watt.server.compile=/opt/softwareag/IntegrationServer/docker/../../jvm/jvm/bin/javac -classpath {0} -d {1} {2}
+    settings.watt.server.threadPool=500
+    settings.watt.server.threadPoolMin=200
+    settings.watt.server.control.serverThreadThreshold=20
+    settings.watt.server.serverlogFilesToKeep=100
+    settings.watt.server.serverlogRotateSize=10MB
+    settings.watt.server.audit.logFilesToKeep=100
+    settings.watt.server.audit.logRotateSize=10MB
+    settings.watt.server.serverlogFilesToKeep=30
+    settings.watt.server.serverlogRotateSize=10MB
+    settings.watt.server.audit.logFilesToKeep=100
+    settings.watt.server.audit.logRotateSize=10MB
+  config-sources.yml: |
+    ######################## Master configuration ############################
+    #
+    # This is the master configuration file which contains the configuration 
+    # source definitions.
+    #
+    # You can find the full configuration reference here:
+    # http://techcommunity.softwareag.com/pwiki/-/wiki/Main/Starting+API+Gateway+using+externalized+configurations
+    #
+    #=======================  Sources configuration ==========================
+
+    sources:
+    - type: YAML
+      allowEdit: true
+      properties:
+        #Provide the appropriate filename
+        location: /opt/softwareag/IntegrationServer/instances/default/packages/WmAPIGateway/resources/configuration/system-settings.yml    
+  system-settings.yml: |
+    ---
+    apigw:
+      analyticsDataStore:
+        tenantId: default
+        hosts: "elasticsearch-0.elasticsearch:9200,elasticsearch-1.elasticsearch:9200,elasticsearch-2.elasticsearch:9200"
+        http:
+          username: analyticsdatastore
+          password: changeme
+          keepAlive: true
+          keepAliveMaxConnections: 60
+          keepAliveMaxConnectionsPerRoute: 20
+          connectionTimeout: 2000
+          socketTimeout: 40000
+          maxRetryTimeout: 200000
+        https:
+          enabled: false
+          keystoreFilepath: C:/softwares/analyticsdatastore/config/demouser-keystore.jks
+          truststoreFilepath: C:/softwares/analyticsdatastore/config/truststore.jks
+          keystoreAlias: cn=demouser
+          keystorePassword: 6572b9b06156a0ff778c
+          truststorePassword: 2c0820e69e7dd5356576
+          enforceHostnameVerification: false
+        sniff:
+          enable: false
+          timeInterval: 70000
+        outboundProxy:
+          enabled: false
+          alias: somealias
+        clientHttpResponseSize: 200    
+      elasticsearch:
+        tenantId: default
+        hosts: "elasticsearch-0.elasticsearch:9200,elasticsearch-1.elasticsearch:9200,elasticsearch-2.elasticsearch:9200"
+        autostart: false
+        http:
+          keepAlive: true
+          keepAliveMaxConnections: 50
+          keepAliveMaxConnectionsPerRoute: 15
+          connectionTimeout: 10000
+          socketTimeout: 30000
+          maxRetryTimeout: 100000
+          username: "elastic"      
+          password: "changeme"             
+        https:
+          enabled: false
+        sniff:
+          enable: false
+          timeInterval: 60000
+        clientHttpResponseSize: 100
+      kibana:
+        dashboardInstance: http://kibana-0.kibana.insurance.svc.cluster.local:5601
+        autostart: false        
+      cluster:
+        aware: true
+        name: APIGatewayCluster
+        sessTimeout: 60
+        actionOnStartupError: standalone
+        ignite:
+          k8sServiceName: api-gateway-service
+          k8sNamespace: insurance
+          discoveryPort: 10100
+          communicationPort: 10400 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: api-gateway-service
+  labels:
+    app.kubernetes.io/name: api-gateway-deployment
+  annotations:
+      prometheus.io/scrape: 'true'    
+      prometheus.io/port: '5555'    
+spec:
+  type: NodePort
+  ports:
+    - name: http1
+      port: 5555
+      nodePort: 31000
+      protocol: TCP 
+    - name: http2
+      port: 9072
+      nodePort: 31001
+      protocol: TCP
+    - name: https1
+      port: 5543
+      targetPort: 35543
+      protocol: TCP
+    - name: https2
+      port: 9073
+      targetPort: 39073  
+      protocol: TCP
+    - name: http3
+      port: 10800
+      targetPort: 10800  
+      protocol: TCP    
+    - name: http4
+      port: 11211
+      targetPort: 11211  
+      protocol: TCP        
+  selector:
+    app: api-gateway-deployment-external-es
+  sessionAffinity: ClientIP    
+
+
+      

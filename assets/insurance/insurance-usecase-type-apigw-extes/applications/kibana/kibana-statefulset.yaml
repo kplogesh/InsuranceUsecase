@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: kibana
+  labels:
+    app: kibana
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kibana
+  serviceName: kibana    
+  template:
+    metadata:
+      labels:
+        app: kibana
+    spec:
+      containers:
+      - name: kibana
+        image: kibana:8.2.3
+        env:
+        - name: SERVER_BASEPATH
+          value: /apigatewayui/dashboardproxy
+        resources:
+        ports:
+        - containerPort: 9405
+        volumeMounts:
+        - name: kibana-config
+          mountPath: /usr/share/kibana/config
+      volumes:
+        - name: kibana-config
+          configMap:
+            name: kibana-apigateway
