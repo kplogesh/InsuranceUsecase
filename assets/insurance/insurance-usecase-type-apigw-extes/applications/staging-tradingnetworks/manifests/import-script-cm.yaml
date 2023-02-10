@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tn-script-configmap
+data:
+  import.sh: |-
+    #!/bin/bash
+    /opt/softwareag/IntegrationServer/bin/startup.sh
+    while [ $(curl -sw '%{http_code}' "http://localhost:5555/health/liveness" -o /dev/null) -ne 200 ]; do
+      sleep 2;
+    done     
+    cd /opt/softwareag/IntegrationServer/packages/WmTN/bin    
+    curl -LJO  https://raw.githubusercontent.com/kplogesh/InsuranceUsecase/develop/assets/insurance/insurance-usecase-type-apigw-extes/applications/tradingnetworks/sourcecode/ExportedData.bin
+    ./tnimport.sh -bin ExportedData.bin -db -force
+    /opt/softwareag/IntegrationServer/bin/shutdown.sh
