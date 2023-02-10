@@ -10,6 +10,6 @@ data:
       sleep 2;
     done     
     cd /opt/softwareag/IntegrationServer/packages/WmTN/bin    
-    curl -LJO  https://raw.githubusercontent.com/kplogesh/InsuranceUsecase/develop/assets/insurance/insurance-usecase-type-apigw-extes/applications/tradingnetworks/sourcecode/ExportedData.bin
+    curl -LJO  https://raw.githubusercontent.com/kplogesh/InsuranceUsecase/develop/assets/insurance/insurance-usecase-type-apigw-extes/applications/tradingnetworks/sourcecode/tn-assets/ExportedData.bin
     ./tnimport.sh -bin ExportedData.bin -db -force
     /opt/softwareag/IntegrationServer/bin/shutdown.sh
