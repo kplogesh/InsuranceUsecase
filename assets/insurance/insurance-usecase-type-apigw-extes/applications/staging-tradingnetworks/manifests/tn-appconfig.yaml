@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: tradingnetworks-appconfig
+  name: staging-tradingnetworks-appconfig
   namespace: insurance
   labels:
     app: tradingnetworks
@@ -34,10 +34,13 @@ data:
     truststore.DEFAULT_IS_TRUSTSTORE.ksLocation=../common/conf/platform_truststore.jks
     truststore.DEFAULT_IS_TRUSTSTORE.ksPassword=manage
     user.Administrator.password=manage
-    jdbc.aliasName.dbURL=jdbc:mysql://mysql:3306/webm1015
-    jdbc.aliasName.driverAlias=webm
-    jdbc.aliasName.userid=root
-    jdbc.aliasName.password=password
-
-
-
+    jdbc.mssqlforwm.dbURL=jdbc:wm:sqlserver://mssql-deployment:1433;databaseName=stgwebm1015
+    jdbc.mssqlforwm.userid=sa
+    jdbc.mssqlforwm.password=MyC0m9l&xP@ssw0rd
+    jdbc.mssqlforcentral.dbURL=jdbc:wm:sqlserver://mssql-deployment:1433;databaseName=stgmws1015db
+    jdbc.mssqlforcentral.userid=sa
+    jdbc.mssqlforcentral.password=MyC0m9l&xP@ssw0rd    
+    jdbcfunc.ISInternal.connPoolAlias=mssqlforwm
+    jdbcfunc.TN.connPoolAlias=mssqlforwm
+    jdbcfunc.ISCoreAudit.connPoolAlias=mssqlforwm
+    jdbcfunc.CentralUsers.connPoolAlias=mssqlforcentral    

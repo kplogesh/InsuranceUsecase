@@ -39,7 +39,13 @@ spec:
         volumeMounts:
         - name: mysql-persistent-storage
           mountPath: /var/lib/mysql
+        - name: mysqlconfig
+          mountPath: /etc/my.cnf
+          subPath: my.cnf
       volumes:
       - name: mysql-persistent-storage
         persistentVolumeClaim:
           claimName: mysql-pv-claim
+      - name: mysqlconfig
+        configMap:
+            name: mysqlconfig
