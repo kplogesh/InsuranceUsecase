@@ -30,10 +30,10 @@ pipeline {
                 withCredentials([file(credentialsId: 'vadigcs62496k8s', variable: 'KUBECONFIG')]) 
                 {
                     sh '''
-                        echo ${BUILD_NUMBER}
+                        kubectl config set-context --current --namespace=insurance
                         cd assets/insurance/insurance-usecase-type-apigw-extes/applications/tradingnetworks/staging/manifests
                         sed -i "s/<TAG>/${BUILD_NUMBER}/" tn-deployment.yaml
-                        cat tn-deployment.yaml
+                        kubectl apply -f .
                         kubectl get po
                     '''
                 }
