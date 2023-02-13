@@ -23,7 +23,7 @@ spec:
         - "staging-tradingnetworks"        
       containers:      
         - name: insurance-fitness-staging-tradingnetworks-container       
-          image: wm.msr.tn:10.15.r.<TAG>
+          image: wm.msr.tn.app:10.15.r.<TAG>
           imagePullPolicy: IfNotPresent   
         # Resources required for the apigateway to function. CPUs and Memory configurations.
           resources:
