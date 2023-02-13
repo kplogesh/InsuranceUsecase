@@ -3,8 +3,8 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                sh '''
-                    chmod +x -R ${env.WORKSPACE}         
+                sh "chmod +x -R ${env.WORKSPACE}"
+                sh '''      
                     assets/insurance/pipeline/stages/build/build.sh
                 '''
             }
