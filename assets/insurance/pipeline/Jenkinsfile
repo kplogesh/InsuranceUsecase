@@ -5,8 +5,10 @@ pipeline {
             steps {
                 sh "chmod +x -R ${env.WORKSPACE}"
                 sh '''      
-                    kubectl get po
                     assets/insurance/pipeline/stages/build/build.sh
+                    withCredentials([file(credentialsId: 'vadigcs62496k8s', variable: 'KUBECONFIG')]) {
+                        kubectl get po
+                     }
                 '''
             }
         }
