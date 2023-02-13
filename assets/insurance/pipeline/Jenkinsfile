@@ -17,7 +17,10 @@ pipeline {
             {
                 withCredentials([file(credentialsId: 'vadigcs62496k8s', variable: 'KUBECONFIG')]) 
                 {
-                    sh 'kubectl get po'
+                    sh '''
+                        echo ${BUILD_NUMBER}
+                        kubectl get po
+                    '''
                 }
             }
         }
