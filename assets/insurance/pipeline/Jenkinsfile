@@ -1,20 +1,24 @@
 pipeline {
     agent any 
     stages {
-        stage('Build') { 
-            steps {
+        stage('Build') 
+        { 
+            steps 
+            {
                 sh "chmod +x -R ${env.WORKSPACE}"
                 sh '''      
                     assets/insurance/pipeline/stages/build/build.sh
-                    withCredentials([file(credentialsId: 'vadigcs62496k8s', variable: 'KUBECONFIG')]) {
-                        kubectl get po
-                     }
                 '''
             }
         }
-        stage('Test') { 
-            steps {
-                echo 'Testing'
+        stage('Test') 
+        { 
+            steps 
+            {
+                withCredentials([file(credentialsId: 'vadigcs62496k8s', variable: 'KUBECONFIG')]) 
+                {
+                    sh 'kubectl get po'
+                }
             }
         }
         stage('Deploy') { 
