@@ -5,11 +5,20 @@ metadata:
 data:
   import.sh: |-
     #!/bin/bash
+    # Initiate the startup for MSR to effect the JDBC pools
     /opt/softwareag/IntegrationServer/bin/startup.sh
+
+    # Wait for MSR to come up
     while [ $(curl -sw '%{http_code}' "http://localhost:5555/health/liveness" -o /dev/null) -ne 200 ]; do
       sleep 2;
     done     
+
+    # When MSR is active, initiate the import process
     cd /opt/softwareag/IntegrationServer/packages/WmTN/bin    
+    # Download the exported binary from repository
     curl -LJO  https://raw.githubusercontent.com/kplogesh/InsuranceUsecase/develop/assets/insurance/insurance-usecase-type-apigw-extes/applications/tradingnetworks/sourcecode/tn-assets/ExportedData.bin
+    # Execute the TN import command to effect the new assets
     ./tnimport.sh -bin ExportedData.bin -db -force
+
+    # When import is complete, initiate the shutdown sequence
     /opt/softwareag/IntegrationServer/bin/shutdown.sh
