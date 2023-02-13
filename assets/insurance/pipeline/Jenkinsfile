@@ -7,7 +7,7 @@ pipeline {
                 sh '''
                     echo "I can do more"
                     ls -ltr
-                    sudo docker image ls
+                    docker build -f assets/insurance/insurance-usecase-type-apigw/applications/assessments/Dockerfile .
                 '''
             }
         }
