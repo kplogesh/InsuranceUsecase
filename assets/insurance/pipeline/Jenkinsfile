@@ -1,17 +1,17 @@
 pipeline {
     agent any 
     stages {
-        stage('Build') 
+        stage('Build Image') 
         { 
             steps 
             {
                 sh "chmod +x -R ${env.WORKSPACE}"
                 sh '''      
-                    assets/insurance/pipeline/stages/build/build.sh
+                    assets/insurance/pipeline/stages/build/build.sh ${BUILD_NUMBER}
                 '''
             }
         }
-        stage('Test') 
+        stage('Staging - Deploy TN Import Job - K8S') 
         { 
             steps 
             {
@@ -24,9 +24,16 @@ pipeline {
                 }
             }
         }
-        stage('Deploy') { 
-            steps {
-                echo 'Deploying'
+        stage('Staging - Deploy MSR - K8S') { 
+            steps 
+            {
+                withCredentials([file(credentialsId: 'vadigcs62496k8s', variable: 'KUBECONFIG')]) 
+                {
+                    sh '''
+                        echo ${BUILD_NUMBER}
+                        kubectl get po
+                    '''
+                }
             }
         }
     }

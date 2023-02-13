@@ -23,7 +23,7 @@ spec:
         - "tradingnetworks"        
       containers:      
         - name: insurance-fitness-tradingnetworks-container       
-          image: sagcr.azurecr.io/webmethods-microservicesruntime:10.15.0.1
+          image: wm.msr.tn:10.15
           imagePullPolicy: IfNotPresent   
         # Resources required for the apigateway to function. CPUs and Memory configurations.
           resources:

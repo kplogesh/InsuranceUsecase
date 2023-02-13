@@ -1,8 +1,3 @@
-#!/bin/bash
-echo "*************************"
-echo "************Build********"
-echo "*************************" 
+cd assets/insurance/insurance-usecase-type-apigw-extes/applications/
 ls -ltr
-cd assets/insurance/insurance-usecase-type-apigw/applications/
-ls -ltr
-docker build -t test-assessments:10.15 -f assessments/Dockerfile .
+docker build -t wm.msr.tn.app:r.$1 -f tradingnetworks/dev/Dockerfile .
