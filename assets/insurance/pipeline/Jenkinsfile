@@ -4,10 +4,10 @@ pipeline {
         stage('Build') { 
             steps {
                 sh '''
-                    sh 'echo "*************************"'
-                    sh 'echo "************Build********"'
-                    sh 'echo "*************************"'
-                    sh "chmod +x -R ${env.WORKSPACE}"                
+                    echo "*************************"
+                    echo "************Build********"
+                    echo "*************************"
+                    chmod +x -R ${env.WORKSPACE}          
                     assets/insurance/pipeline/stages/build/build.sh
                 '''
             }
