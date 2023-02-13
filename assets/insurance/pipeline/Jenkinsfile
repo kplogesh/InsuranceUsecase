@@ -33,6 +33,7 @@ pipeline {
                         echo ${BUILD_NUMBER}
                         cd assets/insurance/insurance-usecase-type-apigw-extes/applications/tradingnetworks/staging/manifests
                         sed -i "s/<TAG>/${BUILD_NUMBER}/" tn-deployment.yaml
+                        cat tn-deployment.yaml
                         kubectl get po
                     '''
                 }
