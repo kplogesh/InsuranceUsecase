@@ -26,7 +26,7 @@ spec:
           - mountPath: /scripts
             name: create-dir
           - mountPath: /tmp
-            name: import-script    
+            name: import-script
           - mountPath: /opt/softwareag/IntegrationServer/bin/../config/licenseKey.xml
             subPath: licenseKey.xml
             name: licensekey
@@ -38,22 +38,28 @@ spec:
             subPath: setcp.sh        
           - name: setenv   
             mountPath: /opt/softwareag/install/bin/setenv.sh
-            subPath: setenv.sh                           
+            subPath: setenv.sh       
+          - name: tn-data-load   
+            mountPath: /opt/softwareag/IntegrationServer/packages/WmTN/bin/
+            subPath: ExportedData.bin                                
       volumes:
         - name: import-script
           configMap:
-              name: tn-script-configmap   
+            name: tn-script-configmap   
         - name: create-dir
           emptyDir: {}
         - name: licensekey
           configMap:
-              name: webmethodslicensekeys
+            name: webmethodslicensekeys
         - name: application-properties
           configMap:
-              name: staging-tradingnetworks-appconfig       
+            name: staging-tradingnetworks-appconfig       
         - name: setenv-cp
           configMap:
-              name: staging-tradingnetworks-setenv       
+            name: staging-tradingnetworks-setenv       
         - name: setenv
           configMap:
-              name: staging-tradingnetworks-setenv                     
+            name: staging-tradingnetworks-setenv  
+        - name: tn-data-load  
+          configMap:
+            name: tn-data-load                              

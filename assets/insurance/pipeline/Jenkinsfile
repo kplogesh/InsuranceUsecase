@@ -9,7 +9,24 @@ pipeline {
                 {
                     sh '''
                         kubectl config set-context --current --namespace=insurance
-                        kubectl exec deploy/tradingnetworks -- bash -c "cd /opt/softwareag/IntegrationServer/packages/WmTN/bin;./tnexport.sh -bin ExportedData.bin -all;cat /opt/softwareag/IntegrationServer/ExportedData.zip" > assets/insurance/insurance-usecase-type-apigw-extes/applications/tradingnetworks/dev/sourcecode/tn-assets/ExportedData.bin
+                        kubectl exec deploy/tradingnetworks -- bash -c "cd /opt/softwareag/IntegrationServer/packages/WmTN/bin;./tnexport.sh -bin ExportedData.bin -all;cat /opt/softwareag/IntegrationServer/ExportedData.zip" > ExportedData.bin
+                    '''
+                }
+            }
+        }               
+        stage('Staging - TN Import Job - K8S') 
+        { 
+            steps 
+            {
+                withCredentials([file(credentialsId: 'vadigcs62496k8s', variable: 'KUBECONFIG')]) 
+                {
+                    sh '''
+                        kubectl config set-context --current --namespace=insurance
+                        kubectl create configmap tn-data-load --from-file=ExportedData.bin
+                        cd assets/insurance/insurance-usecase-type-apigw-extes/applications/tradingnetworks/staging/manifests/job
+                        sed -i "s/<TAG>/${BUILD_NUMBER}/" asset-import-job.yaml
+                        kubectl apply -f ../tn-appconfig.yaml -f ../tn-env-script-cm.yaml -f .
+                        kubectl get po
                     '''
                 }
             }
@@ -23,24 +40,7 @@ pipeline {
                     assets/insurance/pipeline/common.lib/build.sh ${BUILD_NUMBER}
                 '''
             }
-        }                
-        stage('Staging - TN Import Job - K8S') 
-        { 
-            steps 
-            {
-                withCredentials([file(credentialsId: 'vadigcs62496k8s', variable: 'KUBECONFIG')]) 
-                {
-                    sh '''
-                        kubectl config set-context --current --namespace=insurance
-                        cd assets/insurance/insurance-usecase-type-apigw-extes/applications/tradingnetworks/staging/manifests/job
-                        sed -i "s/<TAG>/${BUILD_NUMBER}/" asset-import-job.yaml
-                        kubectl apply -f ../tn-appconfig.yaml -f ../tn-env-script-cm.yaml -f .
-                        echo "Build url is ${BUILD_URL} / ${WORKSPACE} / ${BUILD_NUMBER} / ${JOB_URL} /${NODE_NAME} / ${NODE_LABELS}"
-                        kubectl get po
-                    '''
-                }
-            }
-        }
+        }         
         stage('Staging - Deploy MSR - K8S') { 
             steps 
             {
