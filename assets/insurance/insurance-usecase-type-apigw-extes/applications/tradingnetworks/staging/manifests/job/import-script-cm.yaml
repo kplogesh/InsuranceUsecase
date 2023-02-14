@@ -4,7 +4,7 @@ metadata:
   name: tn-script-configmap
 data:
   import.sh: |-
-    #!/bin/bash
+    #!/bin/bashd
     # Initiate the startup for MSR to effect the JDBC pools
     /opt/softwareag/IntegrationServer/bin/startup.sh
 

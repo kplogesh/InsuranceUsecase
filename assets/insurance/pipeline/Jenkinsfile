@@ -11,14 +11,34 @@ pipeline {
                 '''
             }
         }
-        stage('Staging - Deploy TN Import Job - K8S') 
+        stage('Staging - TN Export Task - K8S') 
         { 
             steps 
             {
                 withCredentials([file(credentialsId: 'vadigcs62496k8s', variable: 'KUBECONFIG')]) 
                 {
                     sh '''
-                        echo ${BUILD_NUMBER}
+                        kubectl config set-context --current --namespace=insurance
+                        kubectl exec -it deploy/tradingnetworks -- sh
+                        cd /opt/softwareag/IntegrationServer/packages/WmTN/bin
+                        ./tnexport -bin ExportedData-${BUILD_NUMBER}.bin -all
+                        exit
+                    '''
+                }
+            }
+        }        
+        stage('Staging - TN Import Job - K8S') 
+        { 
+            steps 
+            {
+                withCredentials([file(credentialsId: 'vadigcs62496k8s', variable: 'KUBECONFIG')]) 
+                {
+                    sh '''
+                        kubectl config set-context --current --namespace=insurance
+                        cd assets/insurance/insurance-usecase-type-apigw-extes/applications/tradingnetworks/staging/manifests/job
+                        sed -i "s/<TAG>/${BUILD_NUMBER}/" asset-import-job.yaml
+                        kubectl apply -f ../tn-appconfig.yaml
+                        kubectl apply -f .
                         kubectl get po
                     '''
                 }

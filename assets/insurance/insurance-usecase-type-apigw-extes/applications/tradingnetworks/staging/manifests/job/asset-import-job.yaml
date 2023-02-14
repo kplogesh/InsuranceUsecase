@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: job-asset-import-tradingnetworks 
+  name: job-asset-import-tradingnetworks-r-<TAG>
 spec:
   template:
     metadata:
