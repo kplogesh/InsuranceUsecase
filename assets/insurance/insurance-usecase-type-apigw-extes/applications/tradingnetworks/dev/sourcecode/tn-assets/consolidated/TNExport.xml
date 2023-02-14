@@ -1,0 +1,32 @@
+<ExportOptions>
+        <option name="exportFileName">ExportedData</option>
+        <option name="exportType">bin</option>
+        <option name="zipFileDir">/opt/softwareag/IntegrationServer</option>
+        <option name="all">false</option>
+        <option name="acdl">false</option>
+        <!-- <asset type="documentattribute" all="true"/>
+        <asset type="documenttype" all="true"/>
+        <asset type="documentattribute" all="true"/>
+        <asset type="processingrule" all="true"/>
+        -->
+        <asset type="partner" all="false">
+                <ids>
+                  <value>52k06q00gossa35t0000000f</value>
+                </ids>
+        </asset>
+        <!--
+        <asset type="fieldgroup" all="true"/>
+        <asset type="fielddefinition" all="true"/>
+        <asset type="externalidtype" all="true"/>
+        <asset type="contacttype" all="true"/>
+        <asset type="binarytype" all="true"/>
+        <asset type="profilegroup" all="true"/>
+        <asset type="queue" all="true"/>
+        <asset type="tpa" all="true"/>
+        <asset type="dls" all="true"/>
+        <asset type="functionalpermission" all="true"/>
+        <asset type="security" all="true"/>
+        <asset type="archiveschedule" all="true"/>
+        <asset type="extendedfield" all="true"/>
+        -->
+</ExportOptions>

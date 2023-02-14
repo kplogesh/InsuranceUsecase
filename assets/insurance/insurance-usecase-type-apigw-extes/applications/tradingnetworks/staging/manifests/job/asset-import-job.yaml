@@ -41,7 +41,10 @@ spec:
             subPath: setenv.sh       
           - name: tn-data-load   
             mountPath: /opt/softwareag/IntegrationServer/packages/WmTN/bin/ExportedData.bin
-            subPath: ExportedData.bin                                
+            subPath: ExportedData.bin    
+          - name: tn-data-load-config 
+            mountPath: /opt/softwareag/IntegrationServer/packages/WmTN/bin/TNExport.xml
+            subPath: TNExport.xml                                     
       volumes:
         - name: import-script
           configMap:
@@ -62,4 +65,7 @@ spec:
             name: staging-tradingnetworks-setenv  
         - name: tn-data-load  
           configMap:
-            name: tn-data-load                              
+            name: tn-data-load      
+        - name: tn-data-load-config
+          configMap:
+            name: tn-data-load                                     
