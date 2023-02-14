@@ -25,8 +25,9 @@ pipeline {
                         cd assets/insurance/insurance-usecase-type-apigw-extes/applications/tradingnetworks/staging/manifests/job
                         sed -i "s/<TAG>/${BUILD_NUMBER}/" asset-import-job.yaml
                         kubectl apply -f ../tn-appconfig.yaml -f ../tn-env-script-cm.yaml -f .
-                        kubectl get po
                         sleep 5
+                        kubectl get po 
+                        kubectl logs -f job/job-asset-import-tradingnetworks-r-${BUILD_NUMBER}
                         kubectl delete cm tn-data-load
                     '''
                 }
