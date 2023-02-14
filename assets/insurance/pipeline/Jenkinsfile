@@ -5,6 +5,7 @@ pipeline {
         { 
             steps 
             {
+                sh "chmod +x -R ${env.WORKSPACE}"
                 withCredentials([file(credentialsId: 'vadigcs62496k8s', variable: 'KUBECONFIG')]) 
                 {
                     sh 'assets/insurance/pipeline/common.lib/export-task.sh'
@@ -35,7 +36,6 @@ pipeline {
         { 
             steps 
             {
-                sh "chmod +x -R ${env.WORKSPACE}"
                 sh 'assets/insurance/pipeline/common.lib/build.sh ${BUILD_NUMBER}'
             }
         }         
