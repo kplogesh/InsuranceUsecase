@@ -1,5 +1,5 @@
 <ExportOptions>
-        <option name="exportFileName">ExportedData</option>
+        <option name="exportFileName">ExportedData-<TAG></option>
         <option name="exportType">bin</option>
         <option name="zipFileDir">/opt/softwareag/IntegrationServer/packages/WmTN/bin</option>
         <option name="all">false</option>

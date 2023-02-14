@@ -19,5 +19,6 @@ data:
     # When MSR is inactive, initiate the import process
     cd /opt/softwareag/IntegrationServer/packages/WmTN/bin    
     # Execute the TN import command to effect the new assets
+    ls -lrt
     ./tnimport.sh -file TNExport.xml -db -force
 
