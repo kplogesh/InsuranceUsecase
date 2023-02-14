@@ -40,8 +40,8 @@ spec:
             mountPath: /opt/softwareag/install/bin/setenv.sh
             subPath: setenv.sh       
           - name: tn-data-load   
-            mountPath: /opt/softwareag/IntegrationServer/packages/WmTN/bin/ExportedData.zip
-            subPath: ExportedData.zip 
+            mountPath: /opt/softwareag/IntegrationServer/packages/WmTN/bin/ExportedData.bin
+            subPath: ExportedData.bin
           - name: tn-data-load-config 
             mountPath: /opt/softwareag/IntegrationServer/packages/WmTN/bin/TNExport.xml
             subPath: TNExport.xml                                     
