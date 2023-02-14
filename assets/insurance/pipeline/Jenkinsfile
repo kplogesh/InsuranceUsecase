@@ -7,10 +7,7 @@ pipeline {
             {
                 withCredentials([file(credentialsId: 'vadigcs62496k8s', variable: 'KUBECONFIG')]) 
                 {
-                    sh '''
-                        kubectl config set-context --current --namespace=insurance
-                        kubectl exec deploy/tradingnetworks -- bash -c "cd /opt/softwareag/IntegrationServer/packages/WmTN/bin;./tnexport.sh -bin ExportedData -all;cat /opt/softwareag/IntegrationServer/ExportedData.zip" > ExportedData.zip                   
-                    '''
+                    sh 'assets/insurance/pipeline/common.lib/export-task.sh'
                 }
             }
         }               
@@ -39,9 +36,7 @@ pipeline {
             steps 
             {
                 sh "chmod +x -R ${env.WORKSPACE}"
-                sh '''      
-                    assets/insurance/pipeline/common.lib/build.sh ${BUILD_NUMBER}
-                '''
+                sh 'assets/insurance/pipeline/common.lib/build.sh ${BUILD_NUMBER}'
             }
         }         
         stage('Staging - Deploy MSR - K8S') { 
