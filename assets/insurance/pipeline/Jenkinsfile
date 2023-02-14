@@ -19,10 +19,7 @@ pipeline {
                 {
                     sh '''
                         kubectl config set-context --current --namespace=insurance
-                        kubectl exec -it deploy/tradingnetworks -- sh
-                        cd /opt/softwareag/IntegrationServer/packages/WmTN/bin
-                        ./tnexport -bin ExportedData-${BUILD_NUMBER}.bin -all
-                        exit
+                        kubectl exec deploy/tradingnetworks -- /opt/softwareag/IntegrationServer/packages/WmTN/bin/tnexport -bin ExportedData-${BUILD_NUMBER}.bin -all
                     '''
                 }
             }
