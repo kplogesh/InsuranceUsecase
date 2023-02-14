@@ -23,7 +23,6 @@ pipeline {
                 {
                     sh '''
                         kubectl config set-context --current --namespace=insurance
-                        kubectl delete configmap tn-data-load
                         kubectl create configmap tn-data-load --from-file=ExportedData.bin
                         cd assets/insurance/insurance-usecase-type-apigw-extes/applications/tradingnetworks/staging/manifests/job
                         sed -i "s/<TAG>/${BUILD_NUMBER}/" asset-import-job.yaml
