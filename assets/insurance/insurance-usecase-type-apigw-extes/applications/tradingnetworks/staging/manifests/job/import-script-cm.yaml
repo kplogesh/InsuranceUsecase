@@ -16,7 +16,7 @@ data:
     # When MSR is active, initiate the import process
     cd /opt/softwareag/IntegrationServer/packages/WmTN/bin    
     # Execute the TN import command to effect the new assets
-    ./tnimport.sh -bin ExportedData.bin -db -force
+    ./tnimport.sh -bin ExportedData.bin
 
     # When import is complete, initiate the shutdown sequence
     /opt/softwareag/IntegrationServer/bin/shutdown.sh */
