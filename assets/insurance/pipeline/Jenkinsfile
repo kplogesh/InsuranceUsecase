@@ -8,7 +8,7 @@ pipeline {
                 sh "chmod +x -R ${env.WORKSPACE}"
                 withCredentials([file(credentialsId: 'vadigcs62496k8s', variable: 'KUBECONFIG')]) 
                 {
-                    sh 'assets/insurance/pipeline/common.lib/export-task.sh'
+                    sh 'assets/insurance/pipeline/common.lib/export-task.sh ${BUILD_NUMBER}'
                 }
             }
         }               
@@ -19,21 +19,11 @@ pipeline {
                 sh 'unzip ExportedData.zip'
                 withCredentials([file(credentialsId: 'vadigcs62496k8s', variable: 'KUBECONFIG')]) 
                 {
-                    sh '''
-                        kubectl config set-context --current --namespace=insurance
-                        kubectl create configmap tn-data-load --from-file=ExportedData.bin
-                        cd assets/insurance/insurance-usecase-type-apigw-extes/applications/tradingnetworks/staging/manifests/job
-                        sed -i "s/<TAG>/${BUILD_NUMBER}/" asset-import-job.yaml
-                        kubectl apply -f ../tn-appconfig.yaml -f ../tn-env-script-cm.yaml -f .
-                        sleep 5
-                        kubectl get po 
-                        kubectl logs -f job/job-asset-import-tradingnetworks-r-${BUILD_NUMBER}
-                        kubectl delete cm tn-data-load
-                    '''
+                    sh 'assets/insurance/pipeline/common.lib/import-task.sh ${BUILD_NUMBER}'
                 }
             }
         }
-        stage('Build Image') 
+        stage('Build Application Image') 
         { 
             steps 
             {
@@ -45,13 +35,7 @@ pipeline {
             {
                 withCredentials([file(credentialsId: 'vadigcs62496k8s', variable: 'KUBECONFIG')]) 
                 {
-                    sh '''
-                        kubectl config set-context --current --namespace=insurance
-                        cd assets/insurance/insurance-usecase-type-apigw-extes/applications/tradingnetworks/staging/manifests
-                        sed -i "s/<TAG>/${BUILD_NUMBER}/" tn-deployment.yaml
-                        kubectl apply -f .
-                        kubectl get po
-                    '''
+                    sh 'assets/insurance/pipeline/common.lib/deploy.sh ${BUILD_NUMBER}'
                 }
             }
         }    
