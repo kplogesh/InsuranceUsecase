@@ -35,7 +35,7 @@ pipeline {
                         cd assets/insurance/insurance-usecase-type-apigw-extes/applications/tradingnetworks/staging/manifests/job
                         sed -i "s/<TAG>/${BUILD_NUMBER}/" asset-import-job.yaml
                         # kubectl apply -f ../tn-appconfig.yaml -f ../tn-env-script-cm.yaml -f .
-                        echo "Build url is ${BUILD_URL} / ${WORKSPACE} / ${BUILD_NUMBER} / ${RUN_ARTIFACTS_DISPLAY_URL} /${RUN_TESTS_DISPLAY_URL}"
+                        echo "Build url is ${BUILD_URL} / ${WORKSPACE} / ${BUILD_NUMBER} / ${JOB_URL} /${NODE_NAME} / ${NODE_LABELS}"
                         kubectl get po
                     '''
                 }
