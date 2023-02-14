@@ -43,8 +43,8 @@ spec:
             mountPath: /opt/softwareag/IntegrationServer/packages/WmTN/bin/ExportedData.bin
             subPath: ExportedData.bin
           - name: tn-data-load-config 
-            mountPath: /opt/softwareag/IntegrationServer/packages/WmTN/bin/TNExport.xml
-            subPath: TNExport.xml                                     
+            mountPath: /opt/softwareag/IntegrationServer/packages/WmTN/bin/TNImport.xml
+            subPath: TNImport.xml                                     
       volumes:
         - name: import-script
           configMap:
