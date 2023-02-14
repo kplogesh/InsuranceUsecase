@@ -19,7 +19,7 @@ pipeline {
                 sh 'unzip ExportedData-${BUILD_NUMBER}.zip'
                 withCredentials([file(credentialsId: 'vadigcs62496k8s', variable: 'KUBECONFIG')]) 
                 {
-                    sh 'assets/insurance/pipeline/common.lib/import-task.sh ${BUILD_NUMBER}'
+                    sh 'assets/insurance/pipeline/common.lib/import-task.sh ${BUILD_NUMBER} ${WORKSPACE}'
                 }
             }
         }
