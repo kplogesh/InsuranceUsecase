@@ -9,7 +9,7 @@ pipeline {
                 {
                     sh '''
                         kubectl config set-context --current --namespace=insurance
-                        kubectl exec deploy/tradingnetworks -- bash -c "cd /opt/softwareag/IntegrationServer/packages/WmTN/bin;./tnexport.sh -bin ExportedData.bin -all;cat /opt/softwareag/IntegrationServer/ExportedData.zip" > ExportedData                      
+                        kubectl exec deploy/tradingnetworks -- bash -c "cd /opt/softwareag/IntegrationServer/packages/WmTN/bin;./tnexport.sh -bin ExportedData.bin -all;cat ExportedData.bin" > ExportedData.bin                   
                     '''
                 }
             }
@@ -18,7 +18,6 @@ pipeline {
         { 
             steps 
             {
-                sh 'unzip ExportedData'
                 withCredentials([file(credentialsId: 'vadigcs62496k8s', variable: 'KUBECONFIG')]) 
                 {
                     sh '''
