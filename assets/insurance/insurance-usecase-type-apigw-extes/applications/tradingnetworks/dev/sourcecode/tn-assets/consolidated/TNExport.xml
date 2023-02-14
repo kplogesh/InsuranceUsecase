@@ -1,7 +1,7 @@
 <ExportOptions>
         <option name="exportFileName">ExportedData</option>
         <option name="exportType">bin</option>
-        <option name="zipFileDir">/opt/softwareag/IntegrationServer</option>
+        <option name="zipFileDir">/opt/softwareag/IntegrationServer/packages/WmTN/bin</option>
         <option name="all">false</option>
         <option name="acdl">false</option>
         <!-- <asset type="documentattribute" all="true"/>
