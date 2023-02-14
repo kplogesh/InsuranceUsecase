@@ -28,6 +28,8 @@ pipeline {
                         sed -i "s/<TAG>/${BUILD_NUMBER}/" asset-import-job.yaml
                         kubectl apply -f ../tn-appconfig.yaml -f ../tn-env-script-cm.yaml -f .
                         kubectl get po
+                        sleep 5
+                        kubectl delete cm tn-data-load
                     '''
                 }
             }
