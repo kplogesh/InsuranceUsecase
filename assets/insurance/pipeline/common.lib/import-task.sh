@@ -1,6 +1,5 @@
 #!/bin/bash
 kubectl config set-context --current --namespace=insurance
-echo pwd
 kubectl create configmap tn-data-load --from-file=ExportedData.bin
 cd assets/insurance/insurance-usecase-type-apigw-extes/applications/tradingnetworks/staging/manifests/job
 sed -i "s/<TAG>/$1/" asset-import-job.yaml
