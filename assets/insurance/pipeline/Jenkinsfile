@@ -1,16 +1,6 @@
 pipeline {
     agent any 
     stages {
-        stage('Build Image') 
-        { 
-            steps 
-            {
-                sh "chmod +x -R ${env.WORKSPACE}"
-                sh '''      
-                    assets/insurance/pipeline/stages/build/build.sh ${BUILD_NUMBER}
-                '''
-            }
-        }
         stage('DEV - TN Export Task - K8S') 
         { 
             steps 
@@ -19,11 +9,21 @@ pipeline {
                 {
                     sh '''
                         kubectl config set-context --current --namespace=insurance
-                        kubectl exec deploy/tradingnetworks -- bash -c "cd /opt/softwareag/IntegrationServer/packages/WmTN/bin;./tnexport.sh -bin ExportedData.bin -all;cat /opt/softwareag/IntegrationServer/ExportedData.zip" > ExportedData.bin
+                        kubectl exec deploy/tradingnetworks -- bash -c "cd /opt/softwareag/IntegrationServer/packages/WmTN/bin;./tnexport.sh -bin ExportedData.bin -all;cat /opt/softwareag/IntegrationServer/ExportedData.zip" > assets/insurance/insurance-usecase-type-apigw-extes/applications/tradingnetworks/dev/sourcecode/tn-assets/ExportedData.bin
                     '''
                 }
             }
-        }        
+        }
+        stage('Build Image') 
+        { 
+            steps 
+            {
+                sh "chmod +x -R ${env.WORKSPACE}"
+                sh '''      
+                    assets/insurance/pipeline/common.lib/build.sh ${BUILD_NUMBER}
+                '''
+            }
+        }                
         stage('Staging - TN Import Job - K8S') 
         { 
             steps 
