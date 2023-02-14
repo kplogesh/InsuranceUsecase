@@ -1,7 +1,7 @@
 #!/bin/bash
 # Set the context to desired namespace
 kubectl config set-context --current --namespace=insurance
-sed -i "s/<TAG>/$1/" assets/insurance/insurance-usecase-type-apigw-extes/applications/tradingnetworks/dev/sourcecode/tn-assets/consolidated/TNExport.xml
+
 # Create the configmap with the exported data from source trading networks
 kubectl create configmap tn-data-load --from-file=ExportedData.bin --from-file=assets/insurance/insurance-usecase-type-apigw-extes/applications/tradingnetworks/dev/sourcecode/tn-assets/consolidated/TNImport.xml
 
