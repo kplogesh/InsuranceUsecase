@@ -5,17 +5,17 @@
         <option name="force">true</option>
         <option name="replaceRuleList">false</option>
         <option name="dbop">true</option>
-        <asset type="documentattribute" all="true"/>
+        <!-- <asset type="documentattribute" all="true"/>
         <asset type="documenttype" all="false">
         </asset>
         <asset type="documentattribute" all="true"/>
-        <asset type="processingrule" all="true"/>
+        <asset type="processingrule" all="true"/> -->
         <asset type="partner" all="false">
                 <ids>
                   <value>52k06q00gossa35t0000000f</value>
                 </ids>
         </asset>
-        <asset type="fieldgroup" all="true"/>
+        <!-- <asset type="fieldgroup" all="true"/>
         <asset type="fielddefinition" all="true"/>
         <asset type="externalidtype" all="true"/>
         <asset type="contacttype" all="true"/>
@@ -27,5 +27,5 @@
         <asset type="functionalpermission" all="true"/>
         <asset type="security" all="true"/>
         <asset type="archiveschedule" all="true"/>
-        <asset type="extendedfield" all="true"/>
+        <asset type="extendedfield" all="true"/> -->
 </ImportOptions>
