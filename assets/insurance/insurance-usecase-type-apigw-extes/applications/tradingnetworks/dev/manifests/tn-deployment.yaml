@@ -68,7 +68,13 @@ spec:
               name: licensekey
             - name: application-properties
               mountPath: /opt/softwareag/IntegrationServer/application.properties
-              subPath: application.properties                
+              subPath: application.properties  
+            - name: setenv-cp  
+              mountPath: /opt/softwareag/IntegrationServer/packages/WmTN/bin/setcp.sh
+              subPath: setcp.sh        
+            - name: setenv   
+              mountPath: /opt/softwareag/install/bin/setenv.sh
+              subPath: setenv.sh                                    
       imagePullSecrets:
         - name: regcred
         - name: sagregcred                
@@ -79,3 +85,9 @@ spec:
         - name: application-properties
           configMap:
               name: tradingnetworks-appconfig
+        - name: setenv-cp
+          configMap:
+              name: staging-tradingnetworks-setenv       
+        - name: setenv
+          configMap:
+              name: staging-tradingnetworks-setenv                 

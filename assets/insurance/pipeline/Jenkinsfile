@@ -11,7 +11,7 @@ pipeline {
                 '''
             }
         }
-        stage('Staging - TN Export Task - K8S') 
+        stage('DEV - TN Export Task - K8S') 
         { 
             steps 
             {
@@ -34,7 +34,7 @@ pipeline {
                         kubectl config set-context --current --namespace=insurance
                         cd assets/insurance/insurance-usecase-type-apigw-extes/applications/tradingnetworks/staging/manifests/job
                         sed -i "s/<TAG>/${BUILD_NUMBER}/" asset-import-job.yaml
-                        kubectl apply -f ../tn-appconfig.yaml
+                        kubectl apply -f ../tn-appconfig.yaml -f ../tn-env-script-cm.yaml
                         kubectl apply -f .
                         kubectl get po
                     '''
