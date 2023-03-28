@@ -39,7 +39,7 @@ spec:
         # Resources required for the apigateway to function. CPUs and Memory configurations.
           resources:
             limits:
-              cpu: "1"
+              cpu: "0.3"
               memory: "1G" 
             requests:
               cpu: "0.25"

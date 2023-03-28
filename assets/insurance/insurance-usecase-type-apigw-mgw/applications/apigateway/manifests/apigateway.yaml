@@ -61,7 +61,7 @@ spec:
             cpu: "2"
             memory: "4Gi"
           limits:
-            cpu: "4"
+            cpu: "3"
             memory: "6Gi"
         # Liveness probe to check whether container is active. Restart happens when liveness probe fails.
         livenessProbe:
@@ -94,6 +94,7 @@ spec:
         - name: apilicensekey
           configMap:
               name: webmethodslicensekeys
+              defaultMode: 0777
 ---
 # An example service for the deployment above.
 apiVersion: v1
