@@ -4,7 +4,7 @@ metadata:
   name: api-gateway
   labels:
     app: api-gateway
-    version: 10.15.
+    version: 10.15.0
   namespace: insurance
 spec:
   replicas: 1
@@ -108,6 +108,7 @@ metadata:
   annotations:
       prometheus.io/scrape: 'true'    
       prometheus.io/port: '5555'
+  namespace: insurance      
 spec:
   type: NodePort
   ports:

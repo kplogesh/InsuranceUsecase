@@ -14,7 +14,7 @@ data:
                 "name": "prometheus",
                 "orgId": 1,
                 "type": "prometheus",
-                "url": "http://prometheus-server:9090",
+                "url": "http://prometheus-server.monitoring:9090",
                 "version": 1
             },
             {
@@ -23,7 +23,7 @@ data:
                 "type": "elasticsearch",
                 "access": "proxy",
                 "database": "customlogger_transactionalevents",
-                "url": "http://api-gateway-service:9240",
+                "url": "http://api-gateway.insurance:9240",
                 "jsonData":
                 {
                   "timeField": "creationDate",
@@ -36,7 +36,7 @@ data:
                 "type": "elasticsearch",
                 "access": "proxy",
                 "database": "logstash-noapplabel*",
-                "url": "http://api-gateway-service:9240",
+                "url": "http://api-gateway-service.insurance:9240",
                 "jsonData":
                 {
                   "timeField": "creationDate",
