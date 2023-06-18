@@ -4,6 +4,7 @@ metadata:
   name: apigw-storage
   labels:
     app: api-gateway
+  namespace: insurance
 spec:
   storageClassName: local-path
   accessModes:

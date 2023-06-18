@@ -2,6 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: webmethodslicensekeys
+  namespace: insurance
 data:
   licenseKey.xml: |
     <?xml version="1.0" encoding="US-ASCII"?>
