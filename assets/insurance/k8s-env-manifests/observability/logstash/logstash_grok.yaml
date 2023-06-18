@@ -120,7 +120,7 @@ spec:
     - containerPort: 5044
     env:
     - name: ELASTICSEARCH_HOSTS
-      value: "http://es-srv.default.svc.cluster.local:9200"
+      value: "http://api-gateway.insurance.svc.cluster.local:9240"
     - name: ELASTICSEARCH_USER
       value: "elastic"
     - name: ELASTICSEARCH_PASSWORD
