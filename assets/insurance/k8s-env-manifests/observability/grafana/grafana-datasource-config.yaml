@@ -31,17 +31,14 @@ data:
                 }
             },
             {
-                "name": "Logs Index - Elasticsearch",
+               "access":"proxy",
                 "editable": true,
-                "type": "elasticsearch",
-                "access": "proxy",
-                "database": "logstash-noapplabel*",
-                "url": "http://api-gateway-service.insurance:9240",
-                "jsonData":
-                {
-                  "timeField": "creationDate",
-                  "esVersion": "8.2.3"
-                }
-            }  
+                "name": "Jaeger",
+                "orgId": 1,
+                "type": "jaeger",
+                "url": "http://tracing.monitoring:80",
+                "version": 1
+            },            
+
         ]
     }
