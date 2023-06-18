@@ -87,6 +87,7 @@ metadata:
   labels:
     app: logstash
   name: logstash
+  namespace: monitoring
 spec:
   containers:
   - image: docker.elastic.co/logstash/logstash:8.2.3
