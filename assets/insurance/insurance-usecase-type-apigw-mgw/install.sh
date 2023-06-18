@@ -40,7 +40,7 @@ kubectl apply -f https://raw.githubusercontent.com/rancher/local-path-provisione
 
 echo "Installing Istio - Service Mesh"
 cd ../../
-curl -L https://istio.io/downloadIstio | sh -
+curl -L https://istio.io/downloadIstio | ISTIO_VERSION=1.16.1 TARGET_ARCH=x86_64 sh -
 export PATH="$PATH:$PWD/istio-1.16.1/bin"
 echo $PATH
 istioctl install --set profile=demo --set values.global.tracer.zipkin.address=jaeger-collector.monitoring:9411 -y

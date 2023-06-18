@@ -27,20 +27,7 @@ data:
                 "jsonData":
                 {
                   "timeField": "creationDate",
-                  "esVersion": "7.10.0"
-                }
-            },
-            {
-                "name": "Nodegraph-Elasticsearch",
-                "editable": true,
-                "type": "elasticsearch",
-                "access": "proxy",
-                "database": "edgefields",
-                "url": "http://api-gateway-service:9240",
-                "jsonData":
-                {
-                  "timeField": "creationDate",
-                  "esVersion": "7.10.0"
+                  "esVersion": "8.2.3"
                 }
             },
             {
@@ -52,8 +39,8 @@ data:
                 "url": "http://api-gateway-service:9240",
                 "jsonData":
                 {
-                  "timeField": "@timestamp",
-                  "esVersion": "7.10.0"
+                  "timeField": "creationDate",
+                  "esVersion": "8.2.3"
                 }
             }  
         ]
