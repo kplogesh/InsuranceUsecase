@@ -13,16 +13,18 @@ data:
       group_by: ['alertname']
       group_wait: 10s
       group_interval: 10s
-      repeat_interval: 3600s
+      repeat_interval: 60s
       receiver: 'email'
     receivers:
     - name: 'email'
       email_configs:
       - to: 'logeshwaran.kannanponnurangam@softwareag.com'
         from: 'lka@softwareag.com'
-        require_tls: false
+        require_tls: true
         send_resolved: true
-        smarthost: mailhost.eur.ad.sag:25
+        smarthost: daesmtp.eur.ad.sag:587
+        auth_username: 'lka@softwareag.com'
+        auth_password: 'Nethra@123Kanishk@123'
     inhibit_rules:
       - source_match:
           severity: 'critical'

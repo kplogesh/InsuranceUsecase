@@ -10,14 +10,14 @@ data:
     groups:
     - name: insurance-app-component-status
       rules:
-      - alert: Insurance Application - InstanceDown
-        expr: up{app=~"insurance-fitness-app",job=~"kubernetes-service-endpoints"} == 0
+      - alert: Insurance Application - Thread - Threshold
+        expr: sag_is_server_threads > 10
         for: 5m
         labels:
           severity: critical
         annotations:
-          summary: "Instance {{ $labels.instance }} down"
-          description: "{{ $labels.instance }} of the application [{{ $labels.app }}] / service [{{ $labels.service }}] has been down for more than 5 minutes"
+          summary: "Instance {{ $labels.instance }} - Thread Threshold Breach"
+          description: "{{ $labels.instance }} of the application [{{ $labels.app }}] / service [{{ $labels.service }}] has exceeded the threshold for more than 5 minutes"
   recording_rules.yml: |
     groups:
     - name: total-http-requests
@@ -229,7 +229,7 @@ data:
         bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
         relabel_configs:
         - source_labels: [__meta_kubernetes_namespace]
-          regex: default
+          regex: default;monitoring
           action: keep
         - source_labels: [__meta_kubernetes_pod_label_app]
           regex: prometheus
