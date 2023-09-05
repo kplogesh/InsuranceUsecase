@@ -26,7 +26,7 @@ spec:
             - --config.file=/etc/config/alertmanager.yml
             - --storage.path=/data
             - --cluster.listen-address=
-            - --web.external-url=http://vadigcs61730.eur.ad.sag:31999
+            - --web.external-url=http://vadigcs03540.eur.ad.sag:31999
           ports:
             - containerPort: 9093
           readinessProbe:

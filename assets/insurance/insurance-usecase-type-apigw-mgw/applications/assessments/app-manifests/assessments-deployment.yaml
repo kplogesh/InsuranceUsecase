@@ -9,7 +9,7 @@ spec:
       app: assessments
       version: v1.0
       component: msr
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -17,6 +17,7 @@ spec:
         component: msr
         version: v1.0
     spec:
+      terminationGracePeriodSeconds: 180
       hostAliases:
       - ip: "127.0.0.1"
         hostnames:
@@ -34,8 +35,12 @@ spec:
             sleep 15;
           done          
       containers:      
-        - name: insurance-fitness-assessments-container       
+        - name: insurance-fitness-assessments-container   
           image: fitness-assessments:v1.0
+          lifecycle:
+            preStop:
+              exec:
+                command: ["/bin/sh","-c","curl http://localhost:5555/invoke/pub.flow:debugLog?message=test123123123;echo test111111;sleep 120"]
           imagePullPolicy: IfNotPresent   
         # Resources required for the apigateway to function. CPUs and Memory configurations.
           resources:

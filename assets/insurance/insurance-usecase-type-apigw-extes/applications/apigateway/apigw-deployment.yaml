@@ -191,6 +191,7 @@ data:
     settings.watt.server.serverlogRotateSize=10MB
     settings.watt.server.audit.logFilesToKeep=100
     settings.watt.server.audit.logRotateSize=10MB
+    settings.watt.debug.level=Info
   config-sources.yml: |
     ######################## Master configuration ############################
     #
@@ -270,6 +271,15 @@ data:
           k8sNamespace: insurance
           discoveryPort: 10100
           communicationPort: 10400 
+      users:
+          Administrator:
+            firstName: "Administrator"
+            lastName: "Administrator"
+            password: "admin123"
+            emailAddresses: [ Administrator@sag.com ]
+            active: true
+            groups:
+            - "Administrators"
 ---
 apiVersion: v1
 kind: Service

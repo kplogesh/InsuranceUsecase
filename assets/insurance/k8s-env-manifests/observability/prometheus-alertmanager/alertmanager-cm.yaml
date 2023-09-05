@@ -18,13 +18,16 @@ data:
     receivers:
     - name: 'email'
       email_configs:
-      - to: 'logeshwaran.kannanponnurangam@softwareag.com'
-        from: 'lka@softwareag.com'
-        require_tls: true
+      - to: '<emailid>'
+        from: '<emailid>'
         send_resolved: true
-        smarthost: daesmtp.eur.ad.sag:587
-        auth_username: 'lka@softwareag.com'
-        auth_password: 'Nethra@123Kanishk@123'
+        require_tls: true
+        smarthost: <host:port>
+        auth_username: <username>
+        auth_password: <password>
+        auth_identity: '<identity>'
+        tls_config:
+           insecure_skip_verify: true
     inhibit_rules:
       - source_match:
           severity: 'critical'
