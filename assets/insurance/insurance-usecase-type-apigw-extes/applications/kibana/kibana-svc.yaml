@@ -11,4 +11,19 @@ spec:
   selector:
     app: kibana
   sessionAffinity: None
-  type: ClusterIP    
+  type: ClusterIP   
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kibana-np
+  labels:
+    app: kibana
+spec:
+  ports:
+  - port: 5601
+    nodePort: 32100
+  selector:
+    app: kibana
+  sessionAffinity: ClientIP
+  type: NodePort 

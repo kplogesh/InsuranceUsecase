@@ -1,0 +1,115 @@
+apiVersion: apps/v1
+kind: StatefulSet 
+metadata:
+  labels:
+    elastic.service: dp-elasticsearch
+  name: dp-elasticsearch
+  namespace: insurance
+spec:
+  serviceName: dp-elasticsearch
+  replicas: 3
+  selector:
+    matchLabels:
+      elastic.service: dp-elasticsearch
+  template:
+    metadata:
+      labels:
+        elastic.service: dp-elasticsearch
+    spec:
+      containers:
+      - name: dp-elasticsearch
+        image: docker.elastic.co/elasticsearch/elasticsearch:8.2.3
+        ports:
+          - containerPort: 9200
+          - containerPort: 9300
+        resources:
+            requests:
+              memory: 500Mi
+              cpu: 500m
+            limits:
+              memory: 3Gi
+              cpu: 1
+        env:
+        - name: ES_JAVA_OPTS
+          value: -Xms512m -Xmx512m
+        - name: action.destructive_requires_name
+          value: "false"
+        - name: bootstrap.memory_lock
+          value: "false"
+        - name: cluster.deprecation_indexing.enabled
+          value: "false"
+        - name: cluster.initial_master_nodes
+          value: dp-elasticsearch-1,dp-elasticsearch-2,dp-elasticsearch-0
+        - name: cluster.name
+          value: elasticsearch-cluster
+        - name: cluster.routing.allocation.disk.watermark.flood_stage
+          value: 1b
+        - name: cluster.routing.allocation.disk.watermark.high
+          value: 1b
+        - name: cluster.routing.allocation.disk.watermark.low
+          value: 1b
+        - name: discovery.seed_hosts
+          value: dp-elasticsearch-2.dp-elasticsearch:9300,dp-elasticsearch-1.dp-elasticsearch:9300,dp-elasticsearch-0.dp-elasticsearch:9300
+        - name: ingest.geoip.downloader.enabled
+          value: "false"
+        - name: node.name
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: node.roles
+          value: master,data
+        - name: node.store.allow_mmap
+          value: "false"
+        - name: path.repo
+          value: /tmp/es-repo
+        - name: xpack.security.enabled
+          value: "false"
+      initContainers:
+      - name: increase-vm-max-map
+        image: docker.io/library/busybox:latest
+        imagePullPolicy: IfNotPresent
+        command: ["sysctl", "-w", "vm.max_map_count=262144"]
+        securityContext:
+          privileged: true  
+      - name: set-dir-owner
+        command:
+        - sh
+        - -c
+        - chown -R 1000:1000 /usr/share/elasticsearch
+        - chown -R 1000:1000 /usr/share/elasticsearch/data
+        - sysctl -w vm.max_map_count=262144
+        - chmod -R 777 /usr/share/elasticsearch
+        - chmod -R 777 /usr/share/elasticsearch/data
+        - chmod -R 777 /usr/share/elasticsearch/data/node
+        - chmod g+rwx /usr/share/elasticsearch/data
+        - chgrp 1000 /usr/share/elasticsearch/data
+        image: busybox:latest
+        imagePullPolicy: IfNotPresent
+        securityContext:
+          privileged: true
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /usr/share/elasticsearch/data
+          name: dp-elasticsearch-data
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 10
+  updateStrategy:
+    type: OnDelete
+  volumeClaimTemplates:
+  - metadata:
+      name: dp-elasticsearch-data
+      labels:
+        type: hostPath
+    spec:
+      accessModes:
+      - ReadWriteOnce
+      storageClassName: local-path
+      resources:
+        requests:
+          storage: 500Mi
+      volumeMode: Filesystem
+

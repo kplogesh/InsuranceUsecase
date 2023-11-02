@@ -41,12 +41,6 @@ spec:
           limits:
             cpu: "4"
             memory: "6Gi" 
-        env:
-        - name: ADMIN_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: api-secrets
-              key: ADMIN_PASSWORD
         ports:
         - containerPort: 5555
           name: 5555tcp01
@@ -80,6 +74,12 @@ spec:
           periodSeconds: 100
           successThreshold: 1
           timeoutSeconds: 10    
+        command:
+        - /bin/sh
+        - -c
+        - |
+          sed -i "s/ADMIN_PASSWORD/$(cat /etc/secrets/ADMIN_PASSWORD)/g" /opt/softwareag/IntegrationServer/instances/default/packages/WmAPIGateway/resources/configuration/system-settings.yml
+          /opt/softwareag/IntegrationServer/bin/startContainer.sh
         volumeMounts:
         - name: apigw-license
           mountPath: /opt/softwareag/IntegrationServer/instances/default/config/licenseKey.xml
@@ -96,6 +96,9 @@ spec:
           mountPath: /opt/softwareag/IntegrationServer/instances/default/packages/WmAPIGateway/resources/configuration/system-settings.yml
           subPath: system-settings.yml        
           readOnly: false       
+        - name: secret-volume 
+          mountPath: /etc/secrets
+          readOnly: true
       volumes:
       - name: apigw-license
         configMap:
@@ -114,6 +117,9 @@ spec:
         configMap:
           name: apigw-application-config  
           defaultMode: 0777  
+      - name: secret-volume
+        secret:
+          secretName: api-secrets
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -215,7 +221,7 @@ data:
       allowEdit: true
       properties:
         #Provide the appropriate filename
-        location: /opt/softwareag/IntegrationServer/instances/default/packages/WmAPIGateway/resources/configuration/system-settings.yml    
+        location: /opt/softwareag/IntegrationServer/instances/default/packages/WmAPIGateway/resources/configuration/system-settings-1.yml    
   system-settings.yml: |
     ---
     apigw:
@@ -282,7 +288,7 @@ data:
           Administrator:
             firstName: "Administrator"
             lastName: "Administrator"
-            password: manage
+            password: "ADMIN_PASSWORD"
             emailAddresses: [ Administrator@sag.com ]
             active: true
             groups:
@@ -327,3 +333,6 @@ spec:
   selector:
     app: api-gateway-deployment-external-es
   sessionAffinity: ClientIP    
+
+
+      
