@@ -1,0 +1,1466 @@
+{
+	"info": {
+		"_postman_id": "b1074f7d-c04b-4b9d-b118-d17ff5c18581",
+		"name": "Insurance Usecase",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3822863"
+	},
+	"item": [
+		{
+			"name": "InsuranceUsecase",
+			"item": [
+				{
+					"name": "Memberships",
+					"item": [
+						{
+							"name": "GET customers",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJraWQiOiJzc29zIiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJBZG1pbmlzdHJhdG9yIiwiYXVkIjoiZmIyMDVkNmQtMjU4OC00OGU0LWIzMzQtYjhmZDFmN2RkZTVhIiwibmJmIjoxNjk5MTExNzgxLCJpc3MiOiJsb2NhbCIsImV4cCI6MTY5OTExNTM4MSwiaWF0IjoxNjk5MTExNzgxLCJhcHBfaWQiOiJmYjIwNWQ2ZC0yNTg4LTQ4ZTQtYjMzNC1iOGZkMWY3ZGRlNWEifQ.LJijUDcN-V2SGRHvowQZFuNBiPivdihrr50Qx63cDN3qh3ZM1qZwPxktdT_NdO_KX3nqrkwIBVYSj61Yk4Q1bt_g4j-zagwbipspdNaJSXdmCozSTzH9e4bHOySurmSjkKl7MHSzChXpLUZxTNmvtMpZc_PacYbTadDMuC_bcHTzxljoSjvs7vtQKG_lskLoiW0KAmzvHc8Gu6VKC_LMXq3MPuskwizyAgQ37wdBvtcXPZZy8vxt6zXH4twoYH-XhkYoMq30FM9vF9dpFJ6XT3exbo4y8gnxd2oas1AywIMESe5NHyBgBm5FvVkuwfQmluLjU8buIkEy6E5m0fzWQQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "x-Gateway-APIKey",
+										"value": "0997ef90-d4b2-43da-888d-6361bcbf28b5",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://daeigcs04462.eur.ad.sag:31000/gateway/customers/1.0/customers",
+									"protocol": "http",
+									"host": [
+										"daeigcs04462",
+										"eur",
+										"ad",
+										"sag"
+									],
+									"port": "31000",
+									"path": [
+										"gateway",
+										"customers",
+										"1.0",
+										"customers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET customers Copy",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://vadigcs61730.eur.ad.sag:32190/gateway/customers/1.0/customers/",
+									"protocol": "http",
+									"host": [
+										"vadigcs61730",
+										"eur",
+										"ad",
+										"sag"
+									],
+									"port": "32190",
+									"path": [
+										"gateway",
+										"customers",
+										"1.0",
+										"customers",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "EKS - GET customers",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8001/api/v1/namespaces/insurance/services/api-gateway:5555/proxy/gateway/customers/1.0/customers/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8001",
+									"path": [
+										"api",
+										"v1",
+										"namespaces",
+										"insurance",
+										"services",
+										"api-gateway:5555",
+										"proxy",
+										"gateway",
+										"customers",
+										"1.0",
+										"customers",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "POST Fitness Enrollment",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"enrollmentFlag\": \"true\"\r\n}"
+								},
+								"url": {
+									"raw": "http://vadigcs61730.eur.ad.sag:31000/gateway/customers/1.0/customers/101/fitness",
+									"protocol": "http",
+									"host": [
+										"vadigcs61730",
+										"eur",
+										"ad",
+										"sag"
+									],
+									"port": "31000",
+									"path": [
+										"gateway",
+										"customers",
+										"1.0",
+										"customers",
+										"101",
+										"fitness"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET Specific Customer",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://vadigcs61730.eur.ad.sag:31000/gateway/customers/1.0/customers/100",
+									"protocol": "http",
+									"host": [
+										"vadigcs61730",
+										"eur",
+										"ad",
+										"sag"
+									],
+									"port": "31000",
+									"path": [
+										"gateway",
+										"customers",
+										"1.0",
+										"customers",
+										"100"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET Specific Customer Policies",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://vadigcs61730.eur.ad.sag:31000/gateway/customers/1.0/customers/100/policies",
+									"protocol": "http",
+									"host": [
+										"vadigcs61730",
+										"eur",
+										"ad",
+										"sag"
+									],
+									"port": "31000",
+									"path": [
+										"gateway",
+										"customers",
+										"1.0",
+										"customers",
+										"100",
+										"policies"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetJWTToken",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://daeigcs04462.eur.ad.sag:30999/rest/pub/apigateway/jwt/getJsonWebToken?app_id=fb205d6d-2588-48e4-b334-b8fd1f7dde5a",
+									"protocol": "https",
+									"host": [
+										"daeigcs04462",
+										"eur",
+										"ad",
+										"sag"
+									],
+									"port": "30999",
+									"path": [
+										"rest",
+										"pub",
+										"apigateway",
+										"jwt",
+										"getJsonWebToken"
+									],
+									"query": [
+										{
+											"key": "app_id",
+											"value": "fb205d6d-2588-48e4-b334-b8fd1f7dde5a"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetJWTTokenStatic",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://daeigcs04462.eur.ad.sag:30999/rest/pub/apigateway/jwt/getJsonWebToken",
+									"protocol": "https",
+									"host": [
+										"daeigcs04462",
+										"eur",
+										"ad",
+										"sag"
+									],
+									"port": "30999",
+									"path": [
+										"rest",
+										"pub",
+										"apigateway",
+										"jwt",
+										"getJsonWebToken"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Challenges",
+					"item": [
+						{
+							"name": "GET Challenges",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "4a85e3fa0fdb4a619815fa7836119789a18eb19e166642038c6746f397257504",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "x-request-id",
+										"value": "36c23e990dfb66d175c078546db2b555",
+										"type": "text"
+									},
+									{
+										"key": "api-version-info",
+										"value": "Test",
+										"type": "text"
+									},
+									{
+										"key": "uber-trace-id",
+										"value": "36c23e990dfb66d175c078546db2ba39",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "X-B3-TraceId",
+										"value": "36c23e990dfb66d175c078546db2ba",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "x-b3-spanid",
+										"value": "36c23e990dfb66d175c078546db2ba39",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Accept-Charset",
+										"value": "UTF-8",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "charset",
+										"value": "UTF-8",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "x-Gateway-APIKey",
+										"value": "54e8ce75-d0db-4aca-a0c0-e15aecd8aa9c",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://daeigcs04462.eur.ad.sag:31000/gateway/challenges/1.0/customers/fitness/challenges/",
+									"protocol": "http",
+									"host": [
+										"daeigcs04462",
+										"eur",
+										"ad",
+										"sag"
+									],
+									"port": "31000",
+									"path": [
+										"gateway",
+										"challenges",
+										"1.0",
+										"customers",
+										"fitness",
+										"challenges",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET Customer Challenges",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://vadigcs61730.eur.ad.sag:30729/gateway/challenges/1.0/customers/100/fitness/challenges/",
+									"protocol": "http",
+									"host": [
+										"vadigcs61730",
+										"eur",
+										"ad",
+										"sag"
+									],
+									"port": "30729",
+									"path": [
+										"gateway",
+										"challenges",
+										"1.0",
+										"customers",
+										"100",
+										"fitness",
+										"challenges",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET Customer Eligible Challenges",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"accept-encoding": true
+								}
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "x-request-id",
+										"value": "36c23e990dfb66d175c078546db2b574",
+										"type": "text"
+									},
+									{
+										"key": "x-api-info",
+										"value": "TEST",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "y-api-info",
+										"value": "TEST",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "z-api-info",
+										"value": "test",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "api-version-info",
+										"value": "challenges_1.0",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://vadigcs03540:32462/gateway/challenges/1.0/customers/105/fitness/challenges/eligibility",
+									"protocol": "http",
+									"host": [
+										"vadigcs03540"
+									],
+									"port": "32462",
+									"path": [
+										"gateway",
+										"challenges",
+										"1.0",
+										"customers",
+										"105",
+										"fitness",
+										"challenges",
+										"eligibility"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "POST Accept Customer Challenge",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"challengeId\": \"C001\"\r\n}"
+								},
+								"url": {
+									"raw": "http://vadigcs61730.eur.ad.sag:30729/gateway/challenges/1.0/customers/100/fitness/challenges",
+									"protocol": "http",
+									"host": [
+										"vadigcs61730",
+										"eur",
+										"ad",
+										"sag"
+									],
+									"port": "30729",
+									"path": [
+										"gateway",
+										"challenges",
+										"1.0",
+										"customers",
+										"100",
+										"fitness",
+										"challenges"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "PUT Complete Customer Challenges",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"customerId\": \"100\",\r\n    \"challengeId\": \"C001\",\r\n    \"userType\": \"Customer\",\r\n    \"criteria\": {\r\n        \"fulfillments\": {\r\n            \"uploadPictures\": \"Uploaded\",\r\n            \"heartBeat\": \"120\",\r\n            \"caloriesBurnt\": \"100\"\r\n        }\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "http://vadigcs61730.eur.ad.sag:30729/gateway/challenges/1.0/customers/100/fitness/challenges",
+									"protocol": "http",
+									"host": [
+										"vadigcs61730",
+										"eur",
+										"ad",
+										"sag"
+									],
+									"port": "30729",
+									"path": [
+										"gateway",
+										"challenges",
+										"1.0",
+										"customers",
+										"100",
+										"fitness",
+										"challenges"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "PUT Complete Inspector Challenges",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"customerId\": \"100\",\r\n    \"challengeId\": \"C001\",\r\n    \"userType\": \"Inspector\",\r\n    \"isAccept\": \"true\"\r\n}"
+								},
+								"url": {
+									"raw": "http://vadigcs61730.eur.ad.sag:31000/gateway/challenges/1.0/customers/100/fitness/challenges",
+									"protocol": "http",
+									"host": [
+										"vadigcs61730",
+										"eur",
+										"ad",
+										"sag"
+									],
+									"port": "31000",
+									"path": [
+										"gateway",
+										"challenges",
+										"1.0",
+										"customers",
+										"100",
+										"fitness",
+										"challenges"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetOAuthToken",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "d1e33c19-0d49-49a4-92ae-744e68646d25",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "ba91e1e3-3bb0-4b05-8a46-407a2380e430",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "granttype",
+										"value": "client_credentials",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"grant_type\": \"client_credentials\",\r\n    \"scope\": \"challenges\"\r\n}"
+								},
+								"url": {
+									"raw": "https://daeigcs04462.eur.ad.sag:30999/invoke/pub.apigateway.oauth2/getAccessToken",
+									"protocol": "https",
+									"host": [
+										"daeigcs04462",
+										"eur",
+										"ad",
+										"sag"
+									],
+									"port": "30999",
+									"path": [
+										"invoke",
+										"pub.apigateway.oauth2",
+										"getAccessToken"
+									],
+									"query": [
+										{
+											"key": "client_id",
+											"value": "ba91e1e3-3bb0-4b05-8a46-407a2380e430",
+											"disabled": true
+										},
+										{
+											"key": "client_secret",
+											"value": "d1e33c19-0d49-49a4-92ae-744e68646d25",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "introspect",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "d1e33c19-0d49-49a4-92ae-744e68646d25",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "ba91e1e3-3bb0-4b05-8a46-407a2380e430",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "granttype",
+										"value": "client_credentials",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"token\": \"4a85e3fa0fdb4a619815fa7836119789a18eb19e166642038c6746f397257504\"\r\n}"
+								},
+								"url": {
+									"raw": "https://daeigcs04462.eur.ad.sag:30999/invoke/pub.oauth:introspectToken",
+									"protocol": "https",
+									"host": [
+										"daeigcs04462",
+										"eur",
+										"ad",
+										"sag"
+									],
+									"port": "30999",
+									"path": [
+										"invoke",
+										"pub.oauth:introspectToken"
+									],
+									"query": [
+										{
+											"key": "client_id",
+											"value": "ba91e1e3-3bb0-4b05-8a46-407a2380e430",
+											"disabled": true
+										},
+										{
+											"key": "client_secret",
+											"value": "d1e33c19-0d49-49a4-92ae-744e68646d25",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Points",
+					"item": [
+						{
+							"name": "POST Points Load",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"challengeId\": \"C001\",\r\n    \"name\": \"YOGA\",\r\n    \"points\": \"1000\"\r\n}"
+								},
+								"url": {
+									"raw": "http://vadigcs61730.eur.ad.sag:31000/gateway/points/1.0/customers/101/fitness/points/accruals",
+									"protocol": "http",
+									"host": [
+										"vadigcs61730",
+										"eur",
+										"ad",
+										"sag"
+									],
+									"port": "31000",
+									"path": [
+										"gateway",
+										"points",
+										"1.0",
+										"customers",
+										"101",
+										"fitness",
+										"points",
+										"accruals"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "POST Points Deduct - Rewards",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"rewardsId\": \"C001\",\r\n    \"rewardsname\": \"YOGA\",\r\n    \"points\": \"1000\"\r\n}"
+								},
+								"url": {
+									"raw": "http://vadigcs61730.eur.ad.sag:31000/gateway/points/1.0/customers/101/fitness/points/deductions",
+									"protocol": "http",
+									"host": [
+										"vadigcs61730",
+										"eur",
+										"ad",
+										"sag"
+									],
+									"port": "31000",
+									"path": [
+										"gateway",
+										"points",
+										"1.0",
+										"customers",
+										"101",
+										"fitness",
+										"points",
+										"deductions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET Customer Points",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://vadigcs61730.eur.ad.sag:31000/gateway/points/1.0/customers/101/fitness/points",
+									"protocol": "http",
+									"host": [
+										"vadigcs61730",
+										"eur",
+										"ad",
+										"sag"
+									],
+									"port": "31000",
+									"path": [
+										"gateway",
+										"points",
+										"1.0",
+										"customers",
+										"101",
+										"fitness",
+										"points"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET MGW Customer Points",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://vadigcs61730.eur.ad.sag:31000/gateway/points/1.0/customers/101/fitness/points",
+									"protocol": "http",
+									"host": [
+										"vadigcs61730",
+										"eur",
+										"ad",
+										"sag"
+									],
+									"port": "31000",
+									"path": [
+										"gateway",
+										"points",
+										"1.0",
+										"customers",
+										"101",
+										"fitness",
+										"points"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Rewards",
+					"item": [
+						{
+							"name": "GET Customer Rewards Details",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://vadigcs61730.eur.ad.sag:30729/gateway/rewards123/1.0/customers/100/fitness/rewards",
+									"protocol": "http",
+									"host": [
+										"vadigcs61730",
+										"eur",
+										"ad",
+										"sag"
+									],
+									"port": "30729",
+									"path": [
+										"gateway",
+										"rewards123",
+										"1.0",
+										"customers",
+										"100",
+										"fitness",
+										"rewards"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET All Rewards",
+							"request": {
+								"auth": {
+									"type": "oauth2",
+									"oauth2": [
+										{
+											"key": "client_authentication",
+											"value": "body",
+											"type": "string"
+										},
+										{
+											"key": "useBrowser",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "https://oauth.pstmn.io/v1/callback",
+											"type": "string"
+										},
+										{
+											"key": "state",
+											"value": "121",
+											"type": "string"
+										},
+										{
+											"key": "scope",
+											"value": "rewards",
+											"type": "string"
+										},
+										{
+											"key": "clientSecret",
+											"value": "8ab9f3cb-95af-48d4-90a0-3209f3db8430",
+											"type": "string"
+										},
+										{
+											"key": "clientId",
+											"value": "c23877ab-7bc9-46b2-a917-b2d092a2604d",
+											"type": "string"
+										},
+										{
+											"key": "authUrl",
+											"value": "https://daeigcs04462.eur.ad.sag:30999/invoke/pub.apigateway.oauth2/authorize",
+											"type": "string"
+										},
+										{
+											"key": "grant_type",
+											"value": "authorization_code",
+											"type": "string"
+										},
+										{
+											"key": "accessTokenUrl",
+											"value": "https://daeigcs04462.eur.ad.sag:30999/invoke/pub.apigateway.oauth2/getAccessToken",
+											"type": "string"
+										},
+										{
+											"key": "tokenName",
+											"value": "Token",
+											"type": "string"
+										},
+										{
+											"key": "addTokenTo",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://daeigcs04462.eur.ad.sag:31000/gateway/rewards/1.0/customers/fitness/rewards",
+									"protocol": "http",
+									"host": [
+										"daeigcs04462",
+										"eur",
+										"ad",
+										"sag"
+									],
+									"port": "31000",
+									"path": [
+										"gateway",
+										"rewards",
+										"1.0",
+										"customers",
+										"fitness",
+										"rewards"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET URL REWRITE",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://vadigcs61730.eur.ad.sag:31000/gateway/rewards-v2/1.0/customers/fitness/rewards-v2",
+									"protocol": "http",
+									"host": [
+										"vadigcs61730",
+										"eur",
+										"ad",
+										"sag"
+									],
+									"port": "31000",
+									"path": [
+										"gateway",
+										"rewards-v2",
+										"1.0",
+										"customers",
+										"fitness",
+										"rewards-v2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "POST Claim Rewards",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"rewardsId\": \"R002\"\r\n}"
+								},
+								"url": {
+									"raw": "http://vadigcs61730.eur.ad.sag:31000/gateway/rewards/1.0/customers/100/fitness/rewards",
+									"protocol": "http",
+									"host": [
+										"vadigcs61730",
+										"eur",
+										"ad",
+										"sag"
+									],
+									"port": "31000",
+									"path": [
+										"gateway",
+										"rewards",
+										"1.0",
+										"customers",
+										"100",
+										"fitness",
+										"rewards"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getAccessToken",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "8ab9f3cb-95af-48d4-90a0-3209f3db8430",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "c23877ab-7bc9-46b2-a917-b2d092a2604d",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "granttype",
+										"value": "client_credentials",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"grant_type\": \"authorization_code\",\r\n    \"scope\": \"challenges\"\r\n}"
+								},
+								"url": {
+									"raw": "https://daeigcs04462.eur.ad.sag:30999/invoke/pub.apigateway.oauth2/getAccessToken",
+									"protocol": "https",
+									"host": [
+										"daeigcs04462",
+										"eur",
+										"ad",
+										"sag"
+									],
+									"port": "30999",
+									"path": [
+										"invoke",
+										"pub.apigateway.oauth2",
+										"getAccessToken"
+									],
+									"query": [
+										{
+											"key": "client_id",
+											"value": "ba91e1e3-3bb0-4b05-8a46-407a2380e430",
+											"disabled": true
+										},
+										{
+											"key": "client_secret",
+											"value": "d1e33c19-0d49-49a4-92ae-744e68646d25",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetOAuthCode",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "d1e33c19-0d49-49a4-92ae-744e68646d25",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "ba91e1e3-3bb0-4b05-8a46-407a2380e430",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "granttype",
+										"value": "client_credentials",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"grant_type\": \"client_credentials\",\r\n    \"scope\": \"challenges\"\r\n}"
+								},
+								"url": {
+									"raw": "https://daeigcs04462.eur.ad.sag:30999/invoke/pub.apigateway.oauth2/getAccessToken",
+									"protocol": "https",
+									"host": [
+										"daeigcs04462",
+										"eur",
+										"ad",
+										"sag"
+									],
+									"port": "30999",
+									"path": [
+										"invoke",
+										"pub.apigateway.oauth2",
+										"getAccessToken"
+									],
+									"query": [
+										{
+											"key": "client_id",
+											"value": "ba91e1e3-3bb0-4b05-8a46-407a2380e430",
+											"disabled": true
+										},
+										{
+											"key": "client_secret",
+											"value": "d1e33c19-0d49-49a4-92ae-744e68646d25",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Assessments",
+					"item": [
+						{
+							"name": "POST Perform Assessment",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"challengeId\": \"C001\",\r\n    \"isAccept\": \"true\"\r\n}"
+								},
+								"url": {
+									"raw": "http://vadigcs61730.eur.ad.sag:30729/gateway/assessments/1.0/customers/100/fitness/assessments",
+									"protocol": "http",
+									"host": [
+										"vadigcs61730",
+										"eur",
+										"ad",
+										"sag"
+									],
+									"port": "30729",
+									"path": [
+										"gateway",
+										"assessments",
+										"1.0",
+										"customers",
+										"100",
+										"fitness",
+										"assessments"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "New Request",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "basic",
+				"basic": [
+					{
+						"key": "password",
+						"value": "manage",
+						"type": "string"
+					},
+					{
+						"key": "username",
+						"value": "Administrator",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	]
+}
