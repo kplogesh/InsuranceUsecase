@@ -22,7 +22,7 @@ data:
                 "editable": true,
                 "type": "elasticsearch",
                 "access": "proxy",
-                "database": "customlogger_transactionalevents",
+                "database": "gateway_default_analytics_transactionalevents_*",
                 "url": "http://api-gateway.insurance:9240",
                 "jsonData":
                 {
